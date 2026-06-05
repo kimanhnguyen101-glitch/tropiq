@@ -1,0 +1,78 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+   Tropi Q — brand design tokens
+   Palette: warm cream, tropical olive/sage, soft gold. Warm, calm, premium.
+--------------------------------------------------------------------------- */
+@theme {
+  /* Brand palette (per founder feedback):
+     olive #607648 · light beige #EEE2D6 · terracotta brown #B56B2C */
+  --color-cream: #eee2d6;
+  --color-cream-deep: #e4d5c3;
+  --color-sand: #d8c7af;
+  --color-ink: #2e2a23;
+  --color-ink-soft: #685f52;
+  /* token name kept as `gold` to avoid wide refactor; value is the new terracotta */
+  --color-gold: #b56b2c;
+  --color-gold-soft: #d08a4f;
+  --color-olive: #607648;
+  --color-olive-deep: #45532f;
+
+  --font-serif: var(--font-cormorant), Georgia, "Times New Roman", serif;
+  --font-sans: var(--font-anek), ui-sans-serif, system-ui, sans-serif;
+}
+
+:root {
+  --background: var(--color-cream);
+  --foreground: var(--color-ink);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Display serif for headings */
+.font-display {
+  font-family: var(--font-serif);
+  letter-spacing: 0.01em;
+}
+
+/* Small uppercase eyebrow label used above section titles */
+.eyebrow {
+  font-family: var(--font-sans);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  font-size: 0.72rem;
+  font-weight: 500;
+  color: var(--color-gold);
+}
+
+/* Subtle entrance animation */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-fade-up {
+  animation: fadeUp 0.8s ease both;
+}
+
+/* Thin decorative divider */
+.rule {
+  height: 1px;
+  width: 64px;
+  background: var(--color-gold);
+}

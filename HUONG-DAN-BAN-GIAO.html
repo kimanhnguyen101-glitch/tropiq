@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tropi Q Website — Hướng dẫn & Bàn giao</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Anek+Latin:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --olive:#607648; --olive-deep:#45532f; --cream:#eee2d6; --cream-deep:#e4d5c3;
+    --sand:#d8c7af; --ink:#2e2a23; --ink-soft:#685f52; --terra:#b56b2c; --terra-soft:#d08a4f;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Anek Latin',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.65;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+  h1,h2,h3{font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;line-height:1.15;color:var(--ink)}
+  .hero{background:var(--olive-deep);color:var(--cream);padding:64px 0 56px;text-align:center}
+  .hero .eyebrow{text-transform:uppercase;letter-spacing:.28em;font-size:.72rem;color:var(--terra-soft);font-weight:500}
+  .hero h1{font-size:3rem;margin:14px 0 8px;color:var(--cream)}
+  .hero h1 .q{color:var(--terra-soft)}
+  .hero p{color:rgba(238,226,214,.85);max-width:560px;margin:0 auto;font-size:1.05rem}
+  .hero .meta{margin-top:22px;font-size:.85rem;color:rgba(238,226,214,.7)}
+  .hero .meta a{color:var(--terra-soft)}
+  section{padding:44px 0;border-bottom:1px solid var(--sand)}
+  h2{font-size:2rem;margin-bottom:6px}
+  h2 .num{color:var(--terra);font-size:1.4rem;margin-right:10px}
+  .lead{color:var(--ink-soft);margin-bottom:22px}
+  h3{font-size:1.3rem;margin:22px 0 8px}
+  p{margin-bottom:12px}
+  ul{margin:0 0 14px 22px}
+  li{margin-bottom:7px}
+  code,kbd{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--cream-deep);padding:2px 7px;border-radius:5px;font-size:.86em;color:var(--olive-deep)}
+  pre{background:var(--ink);color:#f3ead9;padding:16px 18px;border-radius:12px;overflow:auto;margin:8px 0 18px;font-size:.85rem;line-height:1.55}
+  pre code{background:none;color:inherit;padding:0}
+  .card{background:#fff;border:1px solid var(--sand);border-radius:16px;padding:22px 24px;margin:16px 0}
+  .grid{display:grid;gap:14px;grid-template-columns:1fr 1fr}
+  @media(max-width:680px){.grid{grid-template-columns:1fr}.hero h1{font-size:2.2rem}}
+  .pill{display:inline-block;font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:3px 11px;border-radius:999px;text-transform:uppercase}
+  .done{background:rgba(96,118,72,.15);color:var(--olive-deep)}
+  .wait{background:rgba(181,107,44,.15);color:var(--terra)}
+  .todo{background:rgba(104,95,82,.13);color:var(--ink-soft)}
+  table{width:100%;border-collapse:collapse;margin:10px 0 18px;font-size:.95rem}
+  th,td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--sand);vertical-align:top}
+  th{color:var(--terra);font-weight:600;font-size:.8rem;text-transform:uppercase;letter-spacing:.05em}
+  .timeline{list-style:none;margin:0;padding:0}
+  .timeline li{position:relative;padding:0 0 18px 26px;border-left:2px solid var(--sand);margin-left:6px}
+  .timeline li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--olive)}
+  .timeline li:last-child{border-left-color:transparent}
+  .note{background:var(--cream-deep);border-left:4px solid var(--terra);padding:14px 18px;border-radius:0 10px 10px 0;margin:14px 0}
+  a{color:var(--olive-deep)}
+  .foot{text-align:center;color:var(--ink-soft);font-size:.85rem;padding:32px 0 48px}
+  .kbd-row{margin-bottom:6px}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Tài liệu bàn giao dự án</p>
+    <h1>tropi<span class="q">Q</span> — Website</h1>
+    <p>Hướng dẫn sử dụng &amp; tiến độ dự án website head spa. Dành cho người tiếp nhận dự án.</p>
+    <p class="meta">
+      Live: <a href="https://tropiq-seven.vercel.app">tropiq-seven.vercel.app</a> &nbsp;·&nbsp;
+      Cập nhật: 06/2026 &nbsp;·&nbsp; Phiên bản: v1
+    </p>
+  </div>
+</div>
+
+<div class="wrap">
+
+<section>
+  <h2><span class="num">01</span>Tổng quan</h2>
+  <p class="lead">Website marketing cho <strong>Tropi Q Head Spa</strong> — spa cao cấp tại Hà Nội, 85% khách du lịch quốc tế.</p>
+  <ul>
+    <li><strong>Ngôn ngữ:</strong> Tiếng Anh (v1). Định hướng v2 thêm Việt/Trung/Nhật.</li>
+    <li><strong>Mục tiêu:</strong> SEO mạnh để giảm phụ thuộc quảng cáo trả phí; cảm giác tropical, cao cấp; đặt lịch qua WhatsApp.</li>
+    <li><strong>Tech:</strong> Next.js 16 + React 19 + Tailwind CSS v4. Không backend, không database — nội dung tĩnh trong code.</li>
+    <li><strong>Triển khai:</strong> Vercel (đã live, công khai).</li>
+  </ul>
+  <div class="grid">
+    <div class="card"><h3 style="margin-top:0">🎨 Bộ nhận diện</h3>
+      <p style="margin:0">Olive <code>#607648</code> · Beige <code>#EEE2D6</code> · Terracotta <code>#B56B2C</code><br>
+      Font: Cormorant Garamond (tiêu đề) + Anek Latin (nội dung)</p>
+    </div>
+    <div class="card"><h3 style="margin-top:0">📍 Thông tin spa</h3>
+      <p style="margin:0">No. 7 Tran Phu Street, Ba Dinh, Hanoi<br>
+      Hotline/WhatsApp: 033 389 2329 · Open daily 10:30–20:30</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2><span class="num">02</span>Tiến độ dự án</h2>
+  <p class="lead">Các mốc đã hoàn thành và việc còn lại.</p>
+
+  <h3>✅ Đã hoàn thành</h3>
+  <ul class="timeline">
+    <li><strong>Dựng website v1</strong> — 9 trang: Trang chủ, About, Services, Head Spa, Experience, Reviews, Franchise, Journal (blog khung), Contact.</li>
+    <li><strong>SEO nền tảng</strong> — metadata từng trang, 1 H1/trang, JSON-LD (HealthAndBeautyBusiness + rating 5.0), sitemap, robots, og:image.</li>
+    <li><strong>Áp dụng feedback V1</strong> — màu/font mới, cover ảnh mỗi trang, cover trang chủ chỉ ảnh + H1 ở dưới, bỏ chữ "ritual", "5.0★ guest rated", "Find your perfect match", giờ mở cửa 10:30–20:30, khu video placeholder, card acceptance.</li>
+    <li><strong>Gắn logo thật</strong> — header (olive), footer (cream), favicon (chữ Q).</li>
+    <li><strong>Deploy công khai</strong> trên Vercel (đã tắt Deployment Protection).</li>
+  </ul>
+
+  <h3>⏳ Đang chờ tư liệu</h3>
+  <ul>
+    <li><span class="pill wait">Cần xử lý</span> <strong>Bộ ảnh mới</strong> — 87 ảnh đang ở <code>_source/new-photos-raw-heic/</code> (định dạng HEIC, cần convert sang JPG rồi thay vào site).</li>
+    <li><span class="pill wait">Cần file</span> <strong>Video</strong> — khu video khách trải nghiệm (trang chủ) + video minh hoạ từng nhóm dịch vụ (hiện là placeholder).</li>
+  </ul>
+
+  <h3>📋 Việc tiếp theo</h3>
+  <ul>
+    <li><span class="pill todo">Ưu tiên</span> Gắn <strong>domain tropiqspa.vn</strong> (Vercel ▸ Settings ▸ Domains). Sau đó canonical/OG/JSON-LD (đang trỏ tropiqspa.vn) khớp 100% &amp; ảnh share Zalo/Facebook hoạt động.</li>
+    <li>Submit sitemap lên Google Search Console + đồng bộ Google Business Profile.</li>
+    <li>v2: đa ngôn ngữ, nội dung blog thật, embed Google reviews thật, mục 10 Fingers Nail.</li>
+  </ul>
+</section>
+
+<section>
+  <h2><span class="num">03</span>Chạy dự án (local)</h2>
+  <p class="lead">Yêu cầu: Node.js ≥ 20.</p>
+  <pre><code>npm install        # cài thư viện (lần đầu)
+npm run dev        # chạy thử → http://localhost:3000
+npm run build      # build production (chạy để kiểm tra trước khi deploy)</code></pre>
+  <div class="note">💡 Đồng nghiệp dùng <strong>Claude Code</strong>: repo đã có sẵn file <code>CLAUDE.md</code> ở thư mục gốc — Claude sẽ tự đọc để hiểu kiến trúc &amp; quy ước. Cứ mở Claude trong thư mục này và yêu cầu việc cần làm.</div>
+</section>
+
+<section>
+  <h2><span class="num">04</span>Deploy lên Vercel</h2>
+  <p class="lead">Dự án đã <strong>link sẵn</strong> với project Vercel tên <code>tropiq</code> (thư mục <code>.vercel/</code>). Deploy bằng <strong>đúng tài khoản Vercel</strong> đang giữ project này.</p>
+  <pre><code>npx vercel login          # đăng nhập tài khoản Vercel giữ project tropiq
+npx vercel --prod --yes   # deploy production → tự alias về tropiq-seven.vercel.app</code></pre>
+  <div class="note">⚠️ Đừng tạo project mới. Nếu lỡ tạo mới, Vercel sẽ bật lại "Deployment Protection" khiến web đòi đăng nhập — vào <em>Settings ▸ Deployment Protection</em> để tắt.</div>
+</section>
+
+<section>
+  <h2><span class="num">05</span>Cấu trúc thư mục</h2>
+  <pre><code>src/
+  app/
+    layout.js          → fonts, SEO meta, JSON-LD, khung Header/Footer
+    page.js            → TRANG CHỦ
+    globals.css        → ⭐ MÀU &amp; FONT (Tailwind v4 @theme)
+    about/ services/ services/headspa/ experience/
+    reviews/ franchise/ blog/ contact/   → mỗi thư mục 1 page.js
+    sitemap.js, robots.js, icon.png      → SEO + favicon
+  components/
+    Header.jsx, Footer.jsx, FloatingContact.jsx
+    ui.jsx             → ⭐ thành phần dùng chung (Button, PageHero, Section…)
+    VideoEmbed.jsx     → khối video (placeholder/mp4/embed)
+    LeafDecor.jsx      → hoạ tiết lá tropical
+  lib/
+    site.js            → ⭐ THÔNG TIN spa (địa chỉ, SĐT, giờ, logo, menu nav)
+    menu.js            → ⭐ MENU dịch vụ + giá
+public/images/         → logo.png, logo-light.png, store/ (ảnh), og.jpg
+_source/               → tư liệu gốc (KHÔNG lên web): logo, menu PDF, ảnh mới, feedback</code></pre>
+</section>
+
+<section>
+  <h2><span class="num">06</span>Sửa nội dung — làm ở đâu?</h2>
+  <table>
+    <tr><th>Muốn sửa</th><th>File</th></tr>
+    <tr><td>Tên, địa chỉ, SĐT, giờ mở cửa, link mạng xã hội</td><td><code>src/lib/site.js</code> <em>(giờ mở cửa nhớ sửa thêm trong <code>app/layout.js</code> phần JSON-LD)</em></td></tr>
+    <tr><td>Menu dịch vụ &amp; giá</td><td><code>src/lib/menu.js</code></td></tr>
+    <tr><td>Màu sắc / font</td><td><code>src/app/globals.css</code> (block <code>@theme</code>)</td></tr>
+    <tr><td>Nội dung chữ của 1 trang</td><td><code>src/app/&lt;tên-trang&gt;/page.js</code></td></tr>
+    <tr><td>Logo</td><td>thay file <code>public/images/logo.png</code> &amp; <code>logo-light.png</code></td></tr>
+    <tr><td>Ảnh cover từng trang</td><td>prop <code>image</code> của <code>&lt;PageHero&gt;</code> trong page.js của trang đó</td></tr>
+  </table>
+
+  <h3>Thêm ảnh mới (từ HEIC)</h3>
+  <p>Ảnh gốc ở <code>_source/new-photos-raw-heic/</code>. Convert sang JPG rồi bỏ vào <code>public/images/store/</code>:</p>
+  <pre><code># macOS có sẵn lệnh sips
+sips -s format jpeg -Z 1800 "anh.HEIC" --out "public/images/store/store-XX.jpg"</code></pre>
+
+  <h3>Gắn video</h3>
+  <p>Dùng component <code>&lt;VideoEmbed&gt;</code>: truyền <code>src="/videos/ten.mp4"</code> (bỏ file vào <code>public/videos/</code>) hoặc <code>embedUrl="..."</code> (YouTube/Vimeo). Video từng nhóm dịch vụ: set <code>video</code>/<code>embedUrl</code> cho group trong <code>src/lib/menu.js</code>.</p>
+</section>
+
+<section>
+  <h2><span class="num">07</span>Lưu ý quan trọng</h2>
+  <ul>
+    <li>Tailwind v4 dùng <code>@theme</code> trong CSS — <strong>không có</strong> <code>tailwind.config.js</code>.</li>
+    <li>Dùng JavaScript (không TypeScript). Ảnh luôn dùng <code>next/image</code>.</li>
+    <li>Token màu <code>gold</code> thực chất là màu terracotta <code>#B56B2C</code> (giữ tên cũ để khỏi sửa nhiều nơi).</li>
+    <li>Mỗi trang giữ <strong>đúng 1 thẻ H1</strong> và <code>metadata</code> riêng — đừng phá vỡ khi sửa (ảnh hưởng SEO).</li>
+    <li>Số "88 reviews" cố tình <strong>ẩn trên giao diện</strong> nhưng <strong>giữ trong JSON-LD</strong> để Google hiện sao vàng — đừng xoá khỏi schema.</li>
+    <li>Thư mục <code>_source/</code> chỉ là tư liệu gốc, không deploy lên web.</li>
+  </ul>
+</section>
+
+</div>
+
+<div class="foot">
+  Tropi Q Head Spa — Tài liệu bàn giao dự án website · Tạo bằng Claude
+</div>
+
+</body>
+</html>
