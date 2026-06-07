@@ -35,19 +35,15 @@ export default function Home() {
   return (
     <>
       {/* ---------------------------------------------- Cover (image only) */}
-      <section className="relative h-[68vh] min-h-[420px] w-full overflow-hidden">
+      <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1672/941" }}>
         <Image
-          src="/images/store/store-01.jpg"
+          src="/images/cover-home.png"
           alt="Tropi Q head spa treatment room in Hanoi"
           fill
           priority
           sizes="100vw"
           className="object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink/30 to-transparent" />
-        <span className="absolute bottom-6 left-1/2 -translate-x-1/2 text-xs uppercase tracking-[0.3em] text-cream/90 drop-shadow">
-          Relax · Refresh · Renew
-        </span>
       </section>
 
       {/* ----------------------------------------- Headline (below cover) */}

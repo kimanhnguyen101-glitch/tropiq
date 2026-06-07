@@ -51,7 +51,8 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="Price list"
         title="The Tropi Q menu"
-        image="/images/store/store-04.jpg"
+        image="/images/cover-services.png"
+        aspectRatio="1448/1086"
         intro="Every session uses genuine, premium products and our exclusive herbal water. Prices are in Vietnamese đồng (₫); we gladly accept card payments and can help with currency on arrival."
       />
 
