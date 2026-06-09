@@ -159,6 +159,7 @@ export default function Home() {
               src="/videos/home.mp4"
               alt="Guests experiencing the Tropi Q headspa"
               caption="Guest experience at Tropi Q."
+              autoPlay
             />
           </div>
         </Container>

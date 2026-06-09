@@ -29,7 +29,7 @@ function PriceLine({ item }) {
         <p className="text-xs uppercase tracking-wide text-ink-soft">
           {item.durations.join(" · ")}
         </p>
-        <p className="font-display text-lg text-gold">
+        <p className="text-lg font-semibold text-gold">
           {item.prices.map((p) => formatVnd(p)).join(" / ")}
         </p>
       </div>
@@ -40,7 +40,7 @@ function PriceLine({ item }) {
       {item.wasPrice && (
         <p className="text-sm text-ink-soft line-through">{formatVnd(item.wasPrice)}</p>
       )}
-      <p className="font-display text-lg text-gold">{formatVnd(item.price)}</p>
+      <p className="text-lg font-semibold text-gold">{formatVnd(item.price)}</p>
     </div>
   );
 }
@@ -52,8 +52,8 @@ export default function ServicesPage() {
         eyebrow="Price list"
         title="The Tropi Q menu"
         image="/images/cover-services.png"
-        aspectRatio="1448/680"
-        imageClassName="object-cover object-top"
+        aspectRatio="1448/792"
+        imageClassName="object-cover"
         intro="Every session uses genuine, premium products and our exclusive herbal water. Prices are in Vietnamese đồng (₫); we gladly accept card payments and can help with currency on arrival."
       />
 

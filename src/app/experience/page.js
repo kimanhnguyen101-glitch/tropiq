@@ -9,19 +9,27 @@ export const metadata = {
   alternates: { canonical: "/experience" },
 };
 
-// 10 store photos converted from the originals
-const gallery = Array.from({ length: 10 }, (_, i) => ({
-  src: `/images/store/store-${String(i + 1).padStart(2, "0")}.jpg`,
-  alt: `Tropi Q head spa interior ${i + 1}`,
-}));
+// Gallery: 4 new JPGs from founder + 6 existing store photos
+const gallery = [
+  { src: "/images/store/gallery-01.jpg", alt: "Tropi Q headspa space" },
+  { src: "/images/store/gallery-02.jpg", alt: "Tropi Q headspa space" },
+  { src: "/images/store/gallery-03.jpg", alt: "Tropi Q headspa space" },
+  { src: "/images/store/gallery-04.jpg", alt: "Tropi Q headspa space" },
+  { src: "/images/store/store-01.jpg", alt: "Tropi Q headspa interior" },
+  { src: "/images/store/store-02.jpg", alt: "Tropi Q headspa interior" },
+  { src: "/images/store/store-03.jpg", alt: "Tropi Q headspa interior" },
+  { src: "/images/store/store-05.jpg", alt: "Tropi Q headspa interior" },
+  { src: "/images/store/store-06.jpg", alt: "Tropi Q headspa interior" },
+  { src: "/images/store/store-09.jpg", alt: "Tropi Q headspa interior" },
+];
 
 export default function ExperiencePage() {
   return (
     <>
       <PageHero
-        eyebrow="The space"
         title="Step inside the sanctuary"
-        image="/images/store/store-02.jpg"
+        image="/images/cover-experience.png"
+        aspectRatio="2008/783"
         intro="Warm light, tropical green and the quiet hum of calm. A space designed so that the moment you arrive, your shoulders drop."
       />
 
@@ -38,12 +46,12 @@ export default function ExperiencePage() {
                 d: "Herbal jars, original-brand skincare and our exclusive herbal water — everything you see is real and high quality.",
               },
               {
-                t: "A private head spa room",
-                d: "Set apart from the street, your session unfolds in a calm, dedicated space just for head spa.",
+                t: "A private headspa room",
+                d: "Set apart from the street, your session unfolds in a calm, dedicated space just for headspa.",
               },
             ].map((f) => (
               <div key={f.t}>
-                <Eyebrow>{f.t}</Eyebrow>
+                <h3 className="text-lg font-semibold text-ink">{f.t}</h3>
                 <p className="mt-3 text-base leading-relaxed text-ink-soft">{f.d}</p>
               </div>
             ))}

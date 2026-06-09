@@ -16,8 +16,11 @@ export default function VideoEmbed({
   alt = "Tropi Q head spa experience",
   caption,
   rounded = true,
+  autoPlay = false,
 }) {
   const radius = rounded ? "rounded-[2rem]" : "";
+  // Detect video type from extension
+  const videoType = src?.toLowerCase().endsWith(".mov") ? "video/quicktime" : "video/mp4";
 
   let inner;
   if (embedUrl) {
@@ -33,7 +36,18 @@ export default function VideoEmbed({
       />
     );
   } else if (src) {
-    inner = (
+    inner = autoPlay ? (
+      <video
+        className="absolute inset-0 h-full w-full object-cover"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+      >
+        <source src={src} type={videoType} />
+      </video>
+    ) : (
       <video
         className="absolute inset-0 h-full w-full object-cover"
         controls
@@ -41,7 +55,7 @@ export default function VideoEmbed({
         preload="metadata"
         poster={poster}
       >
-        <source src={src} type="video/mp4" />
+        <source src={src} type={videoType} />
       </video>
     );
   } else {

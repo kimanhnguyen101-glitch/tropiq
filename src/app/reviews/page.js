@@ -24,7 +24,8 @@ export default function ReviewsPage() {
       <PageHero
         eyebrow="What guests say"
         title="5.0★ guest rated"
-        image="/images/store/store-09.jpg"
+        image="/images/cover-review.png"
+        aspectRatio="2008/783"
         intro="Every review is natural — no incentives, no pressure. Just guests who came to relax and left wanting to tell others."
       />
 

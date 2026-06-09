@@ -6,6 +6,7 @@ export const menu = [
     id: "head-spa",
     title: "Headspa",
     tagline: "Our signature experience — scalp, neck and shoulders",
+    video: "/videos/headspa.mp4",
     items: [
       {
         name: "Signature",
@@ -32,6 +33,7 @@ export const menu = [
     id: "hair-wash",
     title: "Hair Wash",
     tagline: "A quiet, restorative cleanse",
+    video: "/videos/hairwash.mov",
     items: [
       {
         name: "Fresh",
@@ -57,6 +59,7 @@ export const menu = [
     id: "body-relax",
     title: "Body Relax",
     tagline: "Premium oil massage to release tension",
+    video: "/videos/massage.mp4",
     items: [
       {
         name: "Neck, Shoulder & Nape Relax",
@@ -78,6 +81,7 @@ export const menu = [
     id: "foot-spa",
     title: "Foot Spa",
     tagline: "From a herbal soak to a full experience",
+    video: "/videos/footspa.mp4",
     items: [
       {
         name: "Foot Spa Signature",
@@ -114,6 +118,7 @@ export const menu = [
     id: "facial",
     title: "Facial Treatment",
     tagline: "Premium skincare for face, neck and chest",
+    video: "/videos/facial.mp4",
     items: [
       {
         name: "Relax Facial Care",
@@ -131,6 +136,7 @@ export const menu = [
     id: "combo",
     title: "Signature Combos",
     tagline: "Curated journeys for a full reset",
+    video: "/videos/combo.mp4",
     items: [
       {
         name: "Tropi 1",

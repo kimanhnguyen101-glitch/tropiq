@@ -14,7 +14,8 @@ export default function FranchisePage() {
       <PageHero
         eyebrow="Partner with us"
         title="A Little Tropical Head Spa"
-        image="/images/store/store-10.jpg"
+        image="/images/cover-franchise.png"
+        aspectRatio="2008/783"
         intro="Tropi Q reimagined the head spa in Vietnam — and the model works. We're opening the concept to partners who share our obsession with experience."
       />
 
@@ -37,11 +38,16 @@ export default function FranchisePage() {
 
       <Section className="bg-cream-deep">
         <Container>
-          <SectionTitle
-            eyebrow="Why the model works"
-            title="Experience-led, not equipment-led"
-            intro="We compete on feeling, scent and care — not on discounts. That makes the concept distinctive, defensible and a joy to run."
-          />
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="eyebrow">Why the model works</p>
+            <h2 className="mt-3 text-3xl font-medium leading-tight text-ink sm:text-4xl md:text-5xl">
+              Experience&#8209;led, not equipment&#8209;led
+            </h2>
+            <div className="rule mx-auto mt-5" />
+            <p className="mt-5 text-base leading-relaxed text-ink-soft">
+              We compete on feeling, scent and care — not on discounts. That makes the concept distinctive, defensible and a joy to run.
+            </p>
+          </div>
           <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {[
               { t: "A defined niche", d: "A premium, experience-first head spa positioned away from crowded traditional spas." },
@@ -69,7 +75,7 @@ export default function FranchisePage() {
           </h2>
           <div className="rule mx-auto mt-6" />
           <p className="mt-6 text-base leading-relaxed text-ink-soft">
-            We share notes, documents and lessons on building an experience-led head spa — openly,
+            We share notes, documents and lessons on building an experience-led head spa — openly,<br />
             for partners and curious founders alike. The founder&apos;s journal is on its way.
           </p>
           <Button href="/blog" variant="outline" className="mt-8">

@@ -13,10 +13,10 @@ export default function AboutPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our story"
-        title="Reimagining the head spa in Hanoi"
-        image="/images/store/store-08.jpg"
-        intro="Tropi Q was created to redefine head spa in Vietnam — not as a quick service, but as a tropical experience of warmth, scent and genuine care."
+        title="Reimagining the headspa in Hanoi"
+        image="/images/cover-about.png"
+        aspectRatio="2007/783"
+        intro="Tropi Q was created to redefine headspa in Vietnam — not as a quick service, but as a tropical experience of warmth, scent and genuine care."
       />
 
       <Section className="bg-cream">
@@ -24,8 +24,8 @@ export default function AboutPage() {
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
               <Image
-                src="/images/store/store-08.jpg"
-                alt="Inside Tropi Q head spa"
+                src="/images/about-concept.jpg"
+                alt="Inside Tropi Q headspa"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"

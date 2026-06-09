@@ -22,7 +22,6 @@ export default function BlogPage() {
   return (
     <>
       <PageHero
-        eyebrow="The journal"
         title="Notes on calm, scalp & Hanoi"
         image="/images/store/store-05.jpg"
         intro="Stories on head spa, wellness, our tropical concept and the founder's journey. New writing is on the way."
