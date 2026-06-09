@@ -12,8 +12,8 @@ export const metadata = {
 const reviews = [
   { q: "The most relaxing thing I did in Vietnam. The head massage was unreal and the whole place smells incredible. Already miss it.", a: "Traveller from the UK" },
   { q: "Warm, spotlessly clean and genuinely caring staff. I booked twice in one trip to Hanoi — that says everything.", a: "Guest from Australia" },
-  { q: "A hidden gem near the Old Quarter. Walked past, loved the look, came in on a whim — best decision of the trip.", a: "Traveller from France" },
-  { q: "Not your typical dark spa. The warm light made me feel so comfortable. The herbal water finish is something special.", a: "Guest from Japan" },
+  { q: "Un vrai bijou caché près du Vieux Quartier. Je suis entré par curiosité et c'était la meilleure décision du voyage.", a: "Voyageur de France" },
+  { q: "暗いスパとは全然違います。温かい照明がとても心地よく、ハーバルウォーターのフィニッシュは特別な体験でした。", a: "日本からのゲスト" },
   { q: "Professional from start to finish. They asked what I needed and tailored everything. Left feeling brand new.", a: "Expat in Hanoi" },
   { q: "The signature scent is unforgettable. My hair smelled amazing for days. Worth every đồng.", a: "Traveller from the USA" },
 ];

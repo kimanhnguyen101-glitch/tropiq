@@ -4,15 +4,15 @@
 export const menu = [
   {
     id: "head-spa",
-    title: "Head Spa",
+    title: "Headspa",
     tagline: "Our signature experience — scalp, neck and shoulders",
     items: [
       {
         name: "Signature",
         vi: "Gói đặc biệt",
         price: 695000,
-        badge: "Best seller",
-        desc: "Choose your essential oils, then a head, neck and shoulder massage, scalp exfoliation, hair mask, Tropi Q's exclusive herbal water and a protective ionic blow-dry.",
+        badge: "Must-try",
+        desc: "More than ten signature steps include hairwash and massages.",
       },
       {
         name: "Pure Light Relief",
@@ -60,6 +60,7 @@ export const menu = [
     items: [
       {
         name: "Neck, Shoulder & Nape Relax",
+        badge: "Must-try",
         durations: ["60'"],
         prices: [450000],
         desc: "Massage with premium oil, focused on neck, shoulders and nape.",
@@ -98,6 +99,7 @@ export const menu = [
       },
       {
         name: "Combo 2",
+        badge: "Must-try",
         price: 750000,
         wasPrice: 770000,
         desc: "Foot Relax 30' + callus remover + gel polish + free foot gel-polish removal.",
@@ -138,8 +140,8 @@ export const menu = [
       {
         name: "Tropi 2 — Top to Toes",
         price: 770000,
-        badge: "New",
-        desc: "Head Spa Light + Foot Relax. About 90 minutes.",
+        badge: "Must-try",
+        desc: "Headspa Light + Foot Relax. About 90 minutes.",
       },
       {
         name: "Tropi 3",

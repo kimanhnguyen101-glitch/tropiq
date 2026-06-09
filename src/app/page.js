@@ -13,20 +13,20 @@ const find = (groupId, name) =>
 const featured = [
   {
     ...find("head-spa", "Signature"),
-    title: "Signature Head Spa",
+    title: "Signature Headspa",
     badge: "Must-try",
     href: "/services#head-spa",
   },
   {
     ...find("combo", "Tropi 2 — Top to Toes"),
     title: "Top to Toes",
-    badge: null,
+    badge: "Must-try",
     href: "/services#combo",
   },
   {
     ...find("facial", "Relax Facial Care"),
     title: "Facial Care",
-    badge: null,
+    badge: "Must-try",
     href: "/services#facial",
   },
 ];
@@ -35,10 +35,10 @@ export default function Home() {
   return (
     <>
       {/* ---------------------------------------------- Cover (image only) */}
-      <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1672/941" }}>
+      <section className="relative w-full overflow-hidden" style={{ aspectRatio: "1672/652" }}>
         <Image
           src="/images/cover-home.png"
-          alt="Tropi Q head spa treatment room in Hanoi"
+          alt="Tropi Q headspa treatment room in Hanoi"
           fill
           priority
           sizes="100vw"
@@ -48,14 +48,14 @@ export default function Home() {
 
       {/* ----------------------------------------- Headline (below cover) */}
       <Section className="relative bg-cream pb-12 text-center sm:pb-16">
-        <LeafDecor className="pointer-events-none absolute -right-10 top-0 h-48 w-48 rotate-12 text-olive/10" />
+        <LeafDecor className="pointer-events-none absolute -right-10 top-0 h-64 w-64 rotate-12 text-olive/20" />
+        <LeafDecor variant="palm" className="pointer-events-none absolute -left-8 bottom-0 h-56 w-56 -rotate-12 text-olive/15" />
         <Container className="relative">
-          <Eyebrow>Hanoi · A tropical head spa</Eyebrow>
-          <h1 className="font-display mx-auto mt-4 max-w-4xl text-4xl font-medium leading-[1.05] text-ink sm:text-6xl">
-            True Head Spa <span className="italic text-gold">in Vietnam</span>
+          <h1 className="font-display mx-auto max-w-4xl text-4xl font-medium leading-[1.05] text-ink sm:text-6xl">
+            True Headspa <span className="italic text-gold">in Vietnam</span>
           </h1>
           <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
-            A tropical sanctuary of warm light, signature scents and slow, intentional care —
+            A tropical retreat of warm light, signature scents and slow, intentional care —<br />
             moments from Hanoi&apos;s Old Quarter.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
@@ -99,8 +99,8 @@ export default function Home() {
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
               <Image
-                src="/images/store/store-08.jpg"
-                alt="A multi-sensory head spa moment at Tropi Q"
+                src="/images/Welcome to Tropi Q.jpg"
+                alt="A multi-sensory headspa moment at Tropi Q"
                 fill
                 sizes="(min-width: 768px) 50vw, 100vw"
                 className="object-cover"
@@ -156,9 +156,9 @@ export default function Home() {
           />
           <div className="mt-12">
             <VideoEmbed
-              poster="/images/store/store-01.jpg"
-              alt="Guests experiencing the Tropi Q head spa"
-              caption="Real guest footage coming soon."
+              src="/videos/home.mp4"
+              alt="Guests experiencing the Tropi Q headspa"
+              caption="Guest experience at Tropi Q."
             />
           </div>
         </Container>
@@ -176,7 +176,7 @@ export default function Home() {
         <div className="absolute inset-0 bg-olive-deep/85" />
         <Container className="relative z-10">
           <div className="mx-auto max-w-2xl text-center text-cream">
-            <Eyebrow className="text-gold-soft">The Tropi Q difference</Eyebrow>
+            <p className="eyebrow" style={{ color: "rgba(238,226,214,0.85)", letterSpacing: "0.28em", fontSize: "0.72rem", fontWeight: 500, textTransform: "uppercase" }}>The Tropi Q difference</p>
             <h2 className="font-display mt-3 text-3xl leading-tight drop-shadow sm:text-4xl md:text-5xl">
               A scent you&apos;ll remember Hanoi by
             </h2>
@@ -190,10 +190,13 @@ export default function Home() {
               { t: "Warm light, never dim", d: "So you feel safe enough to fully relax with your eyes closed." },
               { t: "Original-brand products", d: "Genuine, premium materials — nothing cut, nothing compromised." },
               { t: "A signature aroma", d: "Custom essential oils and hair perfume blended only for Tropi Q." },
+              { t: "No extra charge for card payments", d: "Pay however is convenient for you — no hidden fees." },
+              { t: "No pressure to tip the staff", d: "Our team is here to care for you, with no expectations." },
+              { t: "Friendly and welcoming", d: "Every guest is greeted warmly from the moment they arrive." },
             ].map((f) => (
               <div key={f.t} className="rounded-2xl bg-olive-deep/40 p-6 text-center text-cream backdrop-blur-sm">
-                <h3 className="font-display text-xl text-gold-soft">{f.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-cream/95">{f.d}</p>
+                <h3 className="font-display text-xl text-cream">{f.t}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-cream/85">{f.d}</p>
               </div>
             ))}
           </div>

@@ -11,10 +11,10 @@
   --color-cream-deep: #e4d5c3;
   --color-sand: #d8c7af;
   --color-ink: #2e2a23;
-  --color-ink-soft: #685f52;
+  --color-ink-soft: #4f4539;
   /* token name kept as `gold` to avoid wide refactor; value is the new terracotta */
-  --color-gold: #b56b2c;
-  --color-gold-soft: #d08a4f;
+  --color-gold: #9e4e1a;
+  --color-gold-soft: #b86c30;
   --color-olive: #607648;
   --color-olive-deep: #45532f;
 

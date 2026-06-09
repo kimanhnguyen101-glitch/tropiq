@@ -2,14 +2,14 @@
 
 export const site = {
   name: "Tropi Q",
-  tagline: "Head Spa & Relaxation",
+  tagline: "Headspa & Relaxation",
   // When the founder provides a logo, drop the file in /public/images/ and set
   // this to e.g. "/images/logo.svg". Until then, the text wordmark is used.
   logo: "/images/logo.png", // olive wordmark, transparent — for light backgrounds (header)
   logoLight: "/images/logo-light.png", // cream wordmark — for dark backgrounds (footer)
   motto: "Relax · Refresh · Renew",
   // Positioning line used across the site
-  headline: "True Head Spa in Vietnam",
+  headline: "True Headspa in Vietnam",
   description:
     "Tropi Q is a premium head spa in the heart of Hanoi — a tropical sanctuary of warm light, signature herbal aromas and slow, intentional care. Relax, refresh, renew.",
   url: "https://www.tropiqspa.vn",

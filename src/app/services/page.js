@@ -52,7 +52,8 @@ export default function ServicesPage() {
         eyebrow="Price list"
         title="The Tropi Q menu"
         image="/images/cover-services.png"
-        aspectRatio="1448/1086"
+        aspectRatio="1448/680"
+        imageClassName="object-cover object-top"
         intro="Every session uses genuine, premium products and our exclusive herbal water. Prices are in Vietnamese đồng (₫); we gladly accept card payments and can help with currency on arrival."
       />
 
@@ -96,7 +97,7 @@ export default function ServicesPage() {
                         <h3 className="flex flex-wrap items-center gap-2 font-medium text-ink">
                           <span className="text-lg">{item.name}</span>
                           {item.badge && (
-                            <span className="rounded-full bg-gold/15 px-2.5 py-0.5 text-xs font-medium text-gold">
+                            <span className="rounded-full bg-gold px-3 py-0.5 text-xs font-semibold tracking-wide text-cream">
                               {item.badge}
                             </span>
                           )}

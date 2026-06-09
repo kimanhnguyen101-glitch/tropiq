@@ -74,7 +74,7 @@ export function Button({ href, children, variant = "primary", className = "", ..
 // Inner-page cover: a real Tropi Q photo as the hero background (per feedback —
 // every sub-page should have an image cover, not a flat color + text).
 // `image` defaults to a store photo; swap per page or when new photos arrive.
-export function PageHero({ eyebrow, title, intro, image = "/images/store/store-03.jpg", aspectRatio }) {
+export function PageHero({ eyebrow, title, intro, image = "/images/store/store-03.jpg", aspectRatio, imageClassName = "object-cover" }) {
   return (
     <section
       className="relative flex items-end overflow-hidden"
@@ -86,7 +86,7 @@ export function PageHero({ eyebrow, title, intro, image = "/images/store/store-0
         fill
         priority
         sizes="100vw"
-        className="object-cover"
+        className={imageClassName}
       />
       <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/30" />
       <Container className="relative z-10 pb-12 sm:pb-16">
