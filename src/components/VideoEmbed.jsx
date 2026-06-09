@@ -1,28 +1,57 @@
+"use client";
+
 import Image from "next/image";
+import { useRef, useEffect } from "react";
 
 /**
  * Flexible video block.
- * - Pass `src` for a self-hosted mp4 → renders <video> with poster.
+ * - Pass `src` for a self-hosted mp4/mov → renders <video>.
  * - Pass `embedUrl` for YouTube/Vimeo → renders responsive <iframe>.
- * - Pass neither → shows an on-brand placeholder (poster + play button)
- *   so the layout is ready before real footage arrives.
+ * - Pass neither → shows an on-brand placeholder (poster + play icon).
  *
- * Swap-in later: just provide `src` or `embedUrl`.
+ * autoPlay=true: muted, looping, plays when scrolled into view via IntersectionObserver.
+ * The container has NO fixed aspect ratio so the video is shown at its natural
+ * dimensions — portrait clips stay portrait, landscape clips stay landscape.
+ *
+ * autoPlay=false (default): standard <video controls> in a 16:9 container.
  */
 export default function VideoEmbed({
   src,
   embedUrl,
   poster = "/images/store/store-01.jpg",
-  alt = "Tropi Q head spa experience",
+  alt = "Tropi Q headspa experience",
   caption,
   rounded = true,
   autoPlay = false,
 }) {
   const radius = rounded ? "rounded-[2rem]" : "";
-  // Detect video type from extension
-  const videoType = src?.toLowerCase().endsWith(".mov") ? "video/quicktime" : "video/mp4";
+  const videoRef = useRef(null);
+
+  // All video files (including .mov from iPhone) use video/mp4 type.
+  // H.264-encoded MOV containers play correctly with this type in all
+  // major browsers; "video/quicktime" is not supported by Chrome/Firefox.
+  const videoType = "video/mp4";
+
+  // Play/pause the video based on viewport visibility.
+  useEffect(() => {
+    if (!autoPlay || !videoRef.current) return;
+    const el = videoRef.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          el.play().catch(() => {});
+        } else {
+          el.pause();
+        }
+      },
+      { threshold: 0.25 }
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [autoPlay]);
 
   let inner;
+
   if (embedUrl) {
     inner = (
       <iframe
@@ -36,33 +65,45 @@ export default function VideoEmbed({
       />
     );
   } else if (src) {
-    inner = autoPlay ? (
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-      >
-        <source src={src} type={videoType} />
-      </video>
-    ) : (
-      <video
-        className="absolute inset-0 h-full w-full object-cover"
-        controls
-        playsInline
-        preload="metadata"
-        poster={poster}
-      >
-        <source src={src} type={videoType} />
-      </video>
-    );
+    if (autoPlay) {
+      // Natural-ratio video: no fixed container height, w-full h-auto.
+      // This preserves portrait orientation for vertical clips.
+      inner = (
+        <video
+          ref={videoRef}
+          className="block h-auto w-full"
+          muted
+          loop
+          playsInline
+          preload="auto"
+        >
+          <source src={src} type={videoType} />
+        </video>
+      );
+    } else {
+      inner = (
+        <video
+          className="absolute inset-0 h-full w-full object-cover"
+          controls
+          playsInline
+          preload="metadata"
+          poster={poster}
+        >
+          <source src={src} type={videoType} />
+        </video>
+      );
+    }
   } else {
-    // Placeholder
+    // Placeholder — keeps a 16:9 frame until real footage is added.
     inner = (
       <>
-        <Image src={poster} alt={alt} fill sizes="(min-width:1024px) 64rem, 100vw" className="object-cover" />
+        <Image
+          src={poster}
+          alt={alt}
+          fill
+          sizes="(min-width:1024px) 64rem, 100vw"
+          className="object-cover"
+        />
         <div className="absolute inset-0 flex items-center justify-center bg-ink/35">
           <div className="flex flex-col items-center text-cream">
             <span className="flex h-16 w-16 items-center justify-center rounded-full bg-cream/90 text-olive-deep">
@@ -77,10 +118,19 @@ export default function VideoEmbed({
     );
   }
 
+  // autoPlay + src: no fixed aspect ratio – natural dimensions (portrait = portrait).
+  // embed / controls / placeholder: fixed 16:9 container.
+  const wrapperClass =
+    autoPlay && src
+      ? `overflow-hidden ${radius}`
+      : `relative aspect-video overflow-hidden ${radius}`;
+
   return (
     <figure>
-      <div className={`relative aspect-video overflow-hidden ${radius}`}>{inner}</div>
-      {caption && <figcaption className="mt-3 text-center text-xs text-ink-soft">{caption}</figcaption>}
+      <div className={wrapperClass}>{inner}</div>
+      {caption && (
+        <figcaption className="mt-3 text-center text-xs text-ink-soft">{caption}</figcaption>
+      )}
     </figure>
   );
 }

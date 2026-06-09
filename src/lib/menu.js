@@ -33,7 +33,7 @@ export const menu = [
     id: "hair-wash",
     title: "Hair Wash",
     tagline: "A quiet, restorative cleanse",
-    video: "/videos/hairwash.mov",
+    video: "/videos/hairwash.mp4",
     items: [
       {
         name: "Fresh",

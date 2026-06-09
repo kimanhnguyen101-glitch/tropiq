@@ -87,6 +87,7 @@ export default function ServicesPage() {
                     embedUrl={group.embedUrl}
                     poster={groupPoster[group.id]}
                     alt={`${group.title} at Tropi Q`}
+                    autoPlay
                   />
                 </div>
 
