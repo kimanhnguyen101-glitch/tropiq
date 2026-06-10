@@ -1,18 +1,22 @@
-import { Cormorant_Garamond, Anek_Latin } from "next/font/google";
+import { Playfair_Display, Jost } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingContact from "@/components/FloatingContact";
 import { site } from "@/lib/site";
 
-const cormorant = Cormorant_Garamond({
+// Playfair Display: high-contrast serif with strong visual presence.
+// Replaces Cormorant Garamond which was too thin for impact at all sizes.
+const cormorant = Playfair_Display({
   variable: "--font-cormorant",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: ["400", "500", "600", "700", "800"],
+  style: ["normal", "italic"],
   display: "swap",
 });
 
-const anek = Anek_Latin({
+// Jost: geometric sans-serif, clean and refined — pairs beautifully with Playfair.
+const anek = Jost({
   variable: "--font-anek",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
