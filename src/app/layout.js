@@ -96,7 +96,7 @@ const jsonLd = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${cormorant.variable} ${anek.variable} h-full`}>
-      <body className="flex min-h-full flex-col bg-cream">
+      <body className="flex min-h-full flex-col bg-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

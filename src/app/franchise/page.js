@@ -1,4 +1,4 @@
-import { Container, Section, SectionTitle, Eyebrow, Button, PageHero } from "@/components/ui";
+﻿import { Container, Section, SectionTitle, Eyebrow, Button, PageHero } from "@/components/ui";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata = {
@@ -19,7 +19,7 @@ export default function FranchisePage() {
         intro="Tropi Q reimagined the head spa in Vietnam — and the model works. We're opening the concept to partners who share our obsession with experience."
       />
 
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container>
           <div className="grid gap-12 md:grid-cols-3">
             {[
@@ -36,7 +36,7 @@ export default function FranchisePage() {
         </Container>
       </Section>
 
-      <Section className="bg-cream-deep">
+      <Section className="bg-neutral-50">
         <Container>
           <div className="mx-auto max-w-2xl text-center">
             <p className="eyebrow">Why the model works</p>
@@ -57,7 +57,7 @@ export default function FranchisePage() {
               { t: "Premium margins", d: "Guests who value experience over price, supported by genuine premium products." },
               { t: "Founder support", d: "Direct guidance, documents and know-how shared openly with every partner." },
             ].map((f) => (
-              <div key={f.t} className="rounded-3xl border border-sand bg-cream p-8">
+              <div key={f.t} className="rounded-3xl border border-sand bg-white p-8">
                 <h3 className="font-display text-xl text-gold">{f.t}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-ink-soft">{f.d}</p>
               </div>
@@ -67,7 +67,7 @@ export default function FranchisePage() {
       </Section>
 
       {/* Founder journal teaser — links to the journal section */}
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container className="max-w-3xl text-center">
           <Eyebrow>From the founder</Eyebrow>
           <h2 className="font-display mt-3 text-3xl text-ink sm:text-4xl">
@@ -84,7 +84,7 @@ export default function FranchisePage() {
         </Container>
       </Section>
 
-      <section className="bg-cream-deep py-20 text-center">
+      <section className="bg-neutral-50 py-20 text-center">
         <Container>
           <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
           <h2 className="font-display text-3xl text-ink sm:text-4xl">Let&apos;s talk partnership</h2>

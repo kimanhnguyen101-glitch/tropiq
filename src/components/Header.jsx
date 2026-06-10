@@ -40,7 +40,7 @@ export default function Header() {
 
   return (
     // Sticky solid bar — the menu is visually separate from the page cover below.
-    <header className="sticky top-0 z-50 border-b border-sand/60 bg-cream/95 backdrop-blur">
+    <header className="sticky top-0 z-50 border-b border-sand/60 bg-white/95 backdrop-blur">
       <div className="mx-auto flex h-18 max-w-6xl items-center justify-between px-5 py-4 sm:px-8">
         <Link href="/" aria-label="Tropi Q home">
           <Logo />
@@ -90,7 +90,7 @@ export default function Header() {
 
       {/* Mobile menu */}
       {open && (
-        <nav className="border-t border-sand/60 bg-cream px-5 pb-8 pt-4 lg:hidden">
+        <nav className="border-t border-sand/60 bg-white px-5 pb-8 pt-4 lg:hidden">
           <ul className="flex flex-col gap-1">
             {nav.map((item) => (
               <li key={item.href}>

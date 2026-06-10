@@ -1,4 +1,4 @@
-import { Container, Section, PageHero, Button } from "@/components/ui";
+﻿import { Container, Section, PageHero, Button } from "@/components/ui";
 import { whatsappLink } from "@/lib/site";
 
 export const metadata = {
@@ -27,9 +27,9 @@ export default function BlogPage() {
         intro="Stories on head spa, wellness, our tropical concept and the founder's journey. New writing is on the way."
       />
 
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container>
-          <div className="mb-12 rounded-3xl border border-dashed border-gold/40 bg-cream-deep/30 p-8 text-center">
+          <div className="mb-12 rounded-3xl border border-dashed border-gold/40 bg-neutral-50 p-8 text-center">
             <p className="font-display text-2xl text-ink">Articles coming soon</p>
             <p className="mx-auto mt-3 max-w-xl text-sm leading-relaxed text-ink-soft">
               We&apos;re preparing the first pieces below. In the meantime, the best way to
@@ -44,7 +44,7 @@ export default function BlogPage() {
             {planned.map((p) => (
               <article
                 key={p.t}
-                className="flex flex-col rounded-3xl border border-sand bg-cream p-8"
+                className="flex flex-col rounded-3xl border border-sand bg-white p-8"
               >
                 <span className="text-xs uppercase tracking-[0.2em] text-gold">{p.tag}</span>
                 <h2 className="font-display mt-3 text-2xl leading-snug text-ink">{p.t}</h2>

@@ -1,4 +1,4 @@
-import { Container, Section, PageHero, Button } from "@/components/ui";
+﻿import { Container, Section, PageHero, Button } from "@/components/ui";
 import VideoEmbed from "@/components/VideoEmbed";
 import { menu, formatVnd } from "@/lib/menu";
 import { whatsappLink } from "@/lib/site";
@@ -57,7 +57,7 @@ export default function ServicesPage() {
         intro="Every session uses genuine, premium products and our exclusive herbal water. Prices are in Vietnamese đồng (₫); we gladly accept card payments and can help with currency on arrival."
       />
 
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container className="max-w-4xl">
           {/* Quick jump nav */}
           <nav className="mb-14 flex flex-wrap justify-center gap-3">
@@ -115,7 +115,7 @@ export default function ServicesPage() {
                 </ul>
 
                 {group.addons && (
-                  <div className="mt-6 rounded-2xl bg-cream-deep/50 p-6">
+                  <div className="mt-6 rounded-2xl bg-neutral-100 p-6">
                     <p className="text-xs uppercase tracking-[0.2em] text-gold">Add-ons</p>
                     <ul className="mt-3 space-y-2">
                       {group.addons.map((a) => (
@@ -138,7 +138,7 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      <section className="bg-cream-deep py-20 text-center">
+      <section className="bg-neutral-50 py-20 text-center">
         <Container>
           <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
             <h2 className="font-display text-3xl text-ink sm:text-4xl">Not sure where to start?</h2>

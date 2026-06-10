@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Container, Section, SectionTitle, Eyebrow, Button, PageHero } from "@/components/ui";
 import { menu, formatVnd } from "@/lib/menu";
 import { whatsappLink } from "@/lib/site";
@@ -31,7 +31,7 @@ export default function HeadSpaPage() {
       />
 
       {/* Video placeholder — swap the poster image for a real <video> when footage is ready */}
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container className="max-w-4xl">
           <div className="relative aspect-video overflow-hidden rounded-[2rem]">
             <Image
@@ -61,7 +61,7 @@ export default function HeadSpaPage() {
       </Section>
 
       {/* The experience, step by step */}
-      <Section className="bg-cream-deep">
+      <Section className="bg-neutral-50">
         <Container className="max-w-4xl">
           <SectionTitle eyebrow="The experience" title="Five steps to stillness" />
           <ol className="mt-14 space-y-10">
@@ -79,7 +79,7 @@ export default function HeadSpaPage() {
       </Section>
 
       {/* Packages */}
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container>
           <SectionTitle
             eyebrow="Choose your head spa"
@@ -89,7 +89,7 @@ export default function HeadSpaPage() {
             {headSpa.items.map((item) => (
               <div
                 key={item.name}
-                className="flex flex-col rounded-3xl border border-sand bg-cream-deep/30 p-8"
+                className="flex flex-col rounded-3xl border border-sand bg-neutral-50 p-8"
               >
                 {item.badge && (
                   <span className="mb-4 inline-flex w-fit rounded-full bg-gold/15 px-3 py-1 text-xs font-medium text-gold">

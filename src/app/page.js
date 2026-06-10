@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Container, Section, SectionTitle, Eyebrow, Button, Stars } from "@/components/ui";
 import VideoEmbed from "@/components/VideoEmbed";
 import LeafDecor from "@/components/LeafDecor";
@@ -47,7 +47,7 @@ export default function Home() {
       </section>
 
       {/* ----------------------------------------- Headline (below cover) */}
-      <Section className="relative bg-cream pb-12 text-center sm:pb-16">
+      <Section className="relative bg-white pb-12 text-center sm:pb-16">
         <LeafDecor className="pointer-events-none absolute -right-10 top-0 h-64 w-64 rotate-12 text-olive/20" />
         <LeafDecor variant="palm" className="pointer-events-none absolute -left-8 bottom-0 h-56 w-56 -rotate-12 text-olive/15" />
         <Container className="relative">
@@ -74,7 +74,7 @@ export default function Home() {
       </Section>
 
       {/* ------------------------------------------------------------ Welcome */}
-      <Section className="bg-cream-deep">
+      <Section className="bg-neutral-50">
         <Container>
           <div className="grid items-center gap-14 md:grid-cols-2">
             <div>
@@ -120,7 +120,7 @@ export default function Home() {
             {featured.map((item) => (
               <div
                 key={item.title}
-                className="flex flex-col rounded-3xl border border-sand bg-cream-deep/40 p-8 transition-shadow hover:shadow-lg"
+                className="flex flex-col rounded-3xl border border-sand bg-neutral-100 p-8 transition-shadow hover:shadow-lg"
               >
                 {item.badge && (
                   <span className="mb-4 inline-flex w-fit rounded-full bg-gold/15 px-3 py-1 text-xs font-medium tracking-wide text-gold">
@@ -144,7 +144,7 @@ export default function Home() {
       </Section>
 
       {/* --------------------------------------------- Video: guest experience */}
-      <Section className="bg-cream-deep">
+      <Section className="bg-neutral-50">
         <Container className="max-w-4xl">
           <SectionTitle
             eyebrow="See it to feel it"
@@ -207,7 +207,7 @@ export default function Home() {
       </section>
 
       {/* ---------------------------------------------------------- Reviews */}
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container>
           <SectionTitle
             eyebrow="Loved by travellers"
@@ -229,7 +229,7 @@ export default function Home() {
                 a: "Google guest",
               },
             ].map((r, i) => (
-              <figure key={i} className="rounded-3xl border border-sand bg-cream-deep/40 p-8">
+              <figure key={i} className="rounded-3xl border border-sand bg-neutral-100 p-8">
                 <Stars rating={5} />
                 <blockquote className="mt-4 text-base leading-relaxed text-ink">
                   “{r.q}”
@@ -242,7 +242,7 @@ export default function Home() {
       </Section>
 
       {/* -------------------------------------------------------- CTA band */}
-      <section className="bg-cream-deep py-20 text-center">
+      <section className="bg-neutral-50 py-20 text-center">
         <Container>
           <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
           <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">Ready to unwind?</h2>

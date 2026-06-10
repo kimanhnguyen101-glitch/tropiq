@@ -1,4 +1,4 @@
-import { Container, Section, Eyebrow, Button, PageHero } from "@/components/ui";
+﻿import { Container, Section, Eyebrow, Button, PageHero } from "@/components/ui";
 import { site, whatsappLink } from "@/lib/site";
 
 export const metadata = {
@@ -22,7 +22,7 @@ export default function ContactPage() {
         intro="In the heart of Hanoi, just steps from the Old Quarter. We can't wait to welcome you."
       />
 
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container>
           <div className="grid gap-12 md:grid-cols-2">
             {/* Details */}

@@ -1,4 +1,4 @@
-import Image from "next/image";
+﻿import Image from "next/image";
 import { Container, Section, SectionTitle, Eyebrow, Button, PageHero } from "@/components/ui";
 import { whatsappLink } from "@/lib/site";
 
@@ -33,7 +33,7 @@ export default function ExperiencePage() {
         intro="Warm light, tropical green and the quiet hum of calm. A space designed so that the moment you arrive, your shoulders drop."
       />
 
-      <Section className="bg-cream">
+      <Section className="bg-white">
         <Container>
           <div className="grid gap-10 md:grid-cols-3">
             {[
@@ -59,7 +59,7 @@ export default function ExperiencePage() {
         </Container>
       </Section>
 
-      <Section className="bg-cream-deep pt-0">
+      <Section className="bg-neutral-50 pt-0">
         <Container>
           <SectionTitle eyebrow="Gallery" title="A look around Tropi Q" />
           <div className="mt-14 columns-1 gap-4 sm:columns-2 lg:columns-3 [&>*]:mb-4">
@@ -82,7 +82,7 @@ export default function ExperiencePage() {
         </Container>
       </Section>
 
-      <section className="bg-cream-deep py-20 text-center">
+      <section className="bg-neutral-50 py-20 text-center">
         <Container>
           <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
             <h2 className="font-display text-3xl text-ink sm:text-4xl">See it for yourself</h2>
