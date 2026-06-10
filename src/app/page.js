@@ -93,9 +93,6 @@ export default function Home() {
                 essential oils and a hair perfume blended to a ratio that belongs only to Tropi Q,
                 so you carry the calm with you long after you leave.
               </p>
-              <Button href="/about" variant="outline" className="mt-8">
-                Our story
-              </Button>
             </div>
             <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
               <Image
@@ -240,11 +237,6 @@ export default function Home() {
                 <figcaption className="mt-5 text-sm text-ink-soft">— {r.a}</figcaption>
               </figure>
             ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Button href="/reviews" variant="outline">
-              Read more reviews
-            </Button>
           </div>
         </Container>
       </Section>

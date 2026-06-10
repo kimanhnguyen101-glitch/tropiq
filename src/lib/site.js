@@ -53,10 +53,8 @@ export const whatsappLink = `https://wa.me/${site.phone.whatsapp}?text=${encodeU
 
 export const nav = [
   { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   { href: "/experience", label: "Experience" },
-  { href: "/reviews", label: "Reviews" },
   { href: "/franchise", label: "Franchise" },
   { href: "/blog", label: "Journal" },
   { href: "/contact", label: "Contact" },
