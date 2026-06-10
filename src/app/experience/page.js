@@ -82,15 +82,17 @@ export default function ExperiencePage() {
         </Container>
       </Section>
 
-      <section className="bg-olive py-20 text-center text-cream">
+      <section className="bg-cream-deep py-20 text-center">
         <Container>
-          <h2 className="font-display text-3xl sm:text-4xl">See it for yourself</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-cream/85">
-            Photos only go so far. Come breathe it in.
-          </p>
-          <Button href={whatsappLink} variant="gold" className="mt-8">
-            Book a visit
-          </Button>
+          <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
+            <h2 className="font-display text-3xl text-ink sm:text-4xl">See it for yourself</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base text-ink-soft">
+              Photos only go so far. Come breathe it in.
+            </p>
+            <Button href={whatsappLink} variant="gold" className="mt-8">
+              Book a visit
+            </Button>
+          </div>
         </Container>
       </section>
     </>

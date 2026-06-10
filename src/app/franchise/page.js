@@ -84,10 +84,11 @@ export default function FranchisePage() {
         </Container>
       </Section>
 
-      <section className="bg-olive py-20 text-center text-cream">
+      <section className="bg-cream-deep py-20 text-center">
         <Container>
-          <h2 className="font-display text-3xl sm:text-4xl">Let&apos;s talk partnership</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-cream/85">
+          <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
+          <h2 className="font-display text-3xl text-ink sm:text-4xl">Let&apos;s talk partnership</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base text-ink-soft">
             Interested in bringing A Little Tropical Head Spa to your city? Reach out and we&apos;ll
             share the full concept.
           </p>
@@ -95,9 +96,10 @@ export default function FranchisePage() {
             <Button href={whatsappLink} variant="gold">
               Enquire on WhatsApp
             </Button>
-            <Button href="/contact" variant="light">
+            <Button href="/contact" variant="outline">
               Contact us
             </Button>
+          </div>
           </div>
         </Container>
       </section>

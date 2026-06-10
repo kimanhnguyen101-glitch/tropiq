@@ -4,7 +4,7 @@ import { nav, site, whatsappLink } from "@/lib/site";
 
 export default function Footer() {
   return (
-    <footer className="bg-olive-deep text-cream/90">
+    <footer className="bg-ink text-cream/90">
       <div className="mx-auto grid max-w-6xl gap-12 px-5 py-16 sm:px-8 md:grid-cols-3">
         <div>
           {site.logoLight ? (

@@ -138,19 +138,21 @@ export default function ServicesPage() {
         </Container>
       </Section>
 
-      <section className="bg-olive py-20 text-center text-cream">
+      <section className="bg-cream-deep py-20 text-center">
         <Container>
-          <h2 className="font-display text-3xl sm:text-4xl">Not sure where to start?</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-cream/85">
-            Message us and we&apos;ll recommend the perfect session for your time in Hanoi.
-          </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-4">
-            <Button href={whatsappLink} variant="gold">
-              Ask on WhatsApp
-            </Button>
-            <Button href="/services/headspa" variant="light">
-              Our signature head spa
-            </Button>
+          <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
+            <h2 className="font-display text-3xl text-ink sm:text-4xl">Not sure where to start?</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base text-ink-soft">
+              Message us and we&apos;ll recommend the perfect session for your time in Hanoi.
+            </p>
+            <div className="mt-8 flex flex-wrap justify-center gap-4">
+              <Button href={whatsappLink} variant="gold">
+                Ask on WhatsApp
+              </Button>
+              <Button href="/services/headspa" variant="outline">
+                Our signature head spa
+              </Button>
+            </div>
           </div>
         </Container>
       </section>

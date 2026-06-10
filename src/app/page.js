@@ -242,10 +242,11 @@ export default function Home() {
       </Section>
 
       {/* -------------------------------------------------------- CTA band */}
-      <section className="bg-olive py-20 text-center text-cream">
+      <section className="bg-cream-deep py-20 text-center">
         <Container>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl">Ready to unwind?</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-cream/90">
+          <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
+          <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">Ready to unwind?</h2>
+          <p className="mx-auto mt-5 max-w-xl text-base text-ink-soft">
             Message us on WhatsApp to book your headspa experience. We&apos;ll help you choose the
             perfect treatment for your time in Hanoi.
           </p>
@@ -253,9 +254,10 @@ export default function Home() {
             <Button href={whatsappLink} variant="gold">
               Book on WhatsApp
             </Button>
-            <Button href="/contact" variant="light">
+            <Button href="/contact" variant="outline">
               Find us
             </Button>
+          </div>
           </div>
         </Container>
       </section>
