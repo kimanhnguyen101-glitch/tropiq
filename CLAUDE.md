@@ -7,7 +7,7 @@ Hướng dẫn cho Claude khi làm việc trên repo này. Đọc kỹ trước 
 Website marketing cho **Tropi Q** — head spa cao cấp tại Hà Nội, tệp khách 85% du lịch quốc tế.
 Toàn site **tiếng Anh** (v1). Mục tiêu: SEO mạnh, cảm giác tropical/cao cấp, đặt lịch qua WhatsApp.
 - Live: https://tropiq-seven.vercel.app
-- Domain dự kiến (chưa gắn): tropiqspa.vn
+- Domain: tropiqspa.com (đã đổi từ .vn sang .com)
 
 ## Tech stack
 - **Next.js 16** (App Router) + **React 19** — JavaScript (KHÔNG dùng TypeScript)

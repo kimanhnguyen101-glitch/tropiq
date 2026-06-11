@@ -43,4 +43,7 @@ next-env.d.ts
 # raw source assets (not deployed, kept out of git)
 /_source/
 
+# local SWC native binding cache (Windows fix)
+/.swc-cache/
+
 .vercel

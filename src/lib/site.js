@@ -2,17 +2,17 @@
 
 export const site = {
   name: "Tropi Q",
-  tagline: "Headspa & Relaxation",
+  tagline: "Head Spa & Relaxation",
   // When the founder provides a logo, drop the file in /public/images/ and set
   // this to e.g. "/images/logo.svg". Until then, the text wordmark is used.
   logo: "/images/logo.png", // olive wordmark, transparent — for light backgrounds (header)
   logoLight: "/images/logo-light.png", // cream wordmark — for dark backgrounds (footer)
   motto: "Relax · Refresh · Renew",
   // Positioning line used across the site
-  headline: "True Headspa in Vietnam",
+  headline: "True Head Spa in Vietnam",
   description:
     "Tropi Q is a premium head spa in the heart of Hanoi — a tropical sanctuary of warm light, signature herbal aromas and slow, intentional care. Relax, refresh, renew.",
-  url: "https://www.tropiqspa.vn",
+  url: "https://www.tropiqspa.com",
   locale: "en",
   address: {
     street: "No. 7 Tran Phu Street",
@@ -24,10 +24,14 @@ export const site = {
     mapsQuery: "Tropi Q Head Spa, 7 Tran Phu, Ba Dinh, Hanoi",
   },
   phone: {
-    display: "033 389 2329",
-    // International format for tel: and WhatsApp links
+    display: "0333 892 329",
     intl: "+84333892329",
     whatsapp: "84333892329",
+  },
+  legal: {
+    businessName: "HỘ KINH DOANH TROPI Q - GỘI ĐẦU VÀ CHĂM SÓC MÓNG",
+    taxId: "001186028660",
+    email: "tropiqspa@gmail.com",
   },
   hours: [
     { days: "Open daily", time: "10:30am – 8:30pm" },
@@ -40,11 +44,15 @@ export const site = {
   social: {
     instagram: "https://www.instagram.com/tropiqspa",
     tiktok: "https://www.tiktok.com/@tropiqspa",
-    google: "https://www.tropiqspa.vn",
+    google: "https://www.tropiqspa.com",
   },
   // ~ exchange rate used only for the "approx" USD hint on prices (not a live rate)
   vndPerUsd: 25500,
 };
+
+// Google Apps Script Web App URL — paste here after deploying the script
+// (Extensions → Apps Script → Deploy → New deployment → Web app)
+export const bookingScriptUrl = "https://script.google.com/macros/s/AKfycbxBKxCtbffz5ZVwet6dvY9T7ieQFsHQpcqW-qAkjbehj3zBtrILfPw1lrOtuY5fetE/exec";
 
 // Pre-built WhatsApp deep link with a friendly default message
 export const whatsappLink = `https://wa.me/${site.phone.whatsapp}?text=${encodeURIComponent(
@@ -52,9 +60,8 @@ export const whatsappLink = `https://wa.me/${site.phone.whatsapp}?text=${encodeU
 )}`;
 
 export const nav = [
-  { href: "/", label: "Home" },
-  { href: "/services", label: "Services" },
-  { href: "/experience", label: "Experience" },
-  { href: "/franchise", label: "Franchise" },
-  { href: "/blog", label: "Journal" },
+  { href: "/services", key: "services" },
+  { href: "/experience", key: "experience" },
+  { href: "/franchise", key: "franchise" },
+  { href: "/blog", key: "blog" },
 ];
