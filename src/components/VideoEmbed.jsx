@@ -19,7 +19,7 @@ export default function VideoEmbed({
   src,
   embedUrl,
   poster = "/images/store/store-01.jpg",
-  alt = "Tropi Q headspa experience",
+  alt = "Tropi Q head spa experience",
   caption,
   rounded = true,
   autoPlay = false,
@@ -32,6 +32,13 @@ export default function VideoEmbed({
   // H.264-encoded MOV containers play correctly with this type in all
   // major browsers; "video/quicktime" is not supported by Chrome/Firefox.
   const videoType = "video/mp4";
+
+  // Force inline playback on iOS Safari (prevents auto-fullscreen on scroll).
+  useEffect(() => {
+    if (!videoRef.current) return;
+    videoRef.current.setAttribute("webkit-playsinline", "");
+    videoRef.current.setAttribute("playsinline", "");
+  }, []);
 
   // Play/pause the video based on viewport visibility.
   useEffect(() => {
@@ -119,12 +126,12 @@ export default function VideoEmbed({
     );
   }
 
-  // contained or non-autoPlay → fixed 16:9 container
+  // contained or non-autoPlay → fixed 16:9 container with dark letterbox bg
   // autoPlay without contained → natural dimensions (portrait stays portrait)
   const wrapperClass =
     autoPlay && src && !contained
       ? `overflow-hidden ${radius}`
-      : `relative aspect-video overflow-hidden ${radius}`;
+      : `relative aspect-video overflow-hidden bg-neutral-900 ${radius}`;
 
   return (
     <figure>

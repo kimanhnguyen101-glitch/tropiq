@@ -38,6 +38,7 @@ body {
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+  overflow-x: clip; /* prevent any overflowing element from triggering mobile zoom-out */
 }
 
 /* Display serif for headings — Playfair Display */
@@ -84,6 +85,26 @@ body {
 .animate-marquee:hover {
   animation-play-state: paused;
 }
+
+/* Booking form inputs */
+.field-input {
+  width: 100%;
+  border: 1px solid var(--color-sand);
+  border-radius: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  font-size: 0.875rem;
+  color: var(--color-ink);
+  background: white;
+  outline: none;
+  transition: border-color 0.15s;
+}
+.field-input:focus {
+  border-color: var(--color-gold);
+}
+
+/* Hide scrollbar but keep scrolling */
+.scrollbar-hide::-webkit-scrollbar { display: none; }
+.scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
 
 /* Thin decorative divider */
 .rule {

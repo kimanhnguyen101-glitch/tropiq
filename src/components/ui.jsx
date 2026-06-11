@@ -1,4 +1,4 @@
-import Link from "next/link";
+﻿import Link from "next/link";
 import Image from "next/image";
 
 // Reusable primitives shared across pages.
@@ -71,7 +71,7 @@ export function Button({ href, children, variant = "primary", className = "", ..
   );
 }
 
-// Inner-page cover: a real Tropi Q photo as the hero background (per feedback —
+// Inner-page cover: a real Tropi Q photo as the hero background (per feedback â€”
 // every sub-page should have an image cover, not a flat color + text).
 // `image` defaults to a store photo; swap per page or when new photos arrive.
 export function PageHero({ eyebrow, title, intro, image = "/images/store/store-03.jpg", aspectRatio, imageClassName = "object-cover" }) {
@@ -88,19 +88,25 @@ export function PageHero({ eyebrow, title, intro, image = "/images/store/store-0
         sizes="100vw"
         className={imageClassName}
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/30" />
-      <Container className="relative z-10 pb-12 sm:pb-16">
-        <div className="max-w-2xl text-cream">
-          {eyebrow && <Eyebrow className="text-gold-soft">{eyebrow}</Eyebrow>}
-          <h1 className="font-display mt-3 text-4xl leading-tight drop-shadow sm:text-5xl md:text-6xl">
-            {title}
-          </h1>
-          <div className="rule mt-6 bg-gold-soft" />
-          {intro && (
-            <p className="mt-5 max-w-xl text-base leading-relaxed text-cream/90">{intro}</p>
-          )}
-        </div>
-      </Container>
+      {(eyebrow || title || intro) && (
+        <>
+          <div className="absolute inset-0 bg-gradient-to-t from-ink/80 via-ink/40 to-ink/30" />
+          <Container className="relative z-10 pb-5 sm:pb-16">
+            <div className="max-w-2xl text-cream">
+              {eyebrow && <Eyebrow className="text-gold-soft hidden sm:block">{eyebrow}</Eyebrow>}
+              {title && (
+                <h1 className="font-display mt-1 text-2xl leading-tight drop-shadow sm:mt-3 sm:text-5xl md:text-6xl">
+                  {title}
+                </h1>
+              )}
+              {title && <div className="rule mt-3 bg-gold-soft sm:mt-6" />}
+              {intro && (
+                <p className="mt-5 max-w-xl text-base leading-relaxed text-cream/90 hidden sm:block">{intro}</p>
+              )}
+            </div>
+          </Container>
+        </>
+      )}
     </section>
   );
 }
@@ -117,3 +123,5 @@ export function Stars({ rating = 5, className = "" }) {
     </span>
   );
 }
+
+
