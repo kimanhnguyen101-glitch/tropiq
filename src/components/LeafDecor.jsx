@@ -1,30 +1,45 @@
 /**
- * Decorative tropical leaf (monstera) SVG for ambient "tropical vibe".
- * Purely decorative → aria-hidden. Position with className from the parent.
+ * Decorative tropical leaf SVGs. Purely decorative → aria-hidden.
+ * variant="monstera" (default) → lá trầu bà (heartleaf philodendron)
+ * variant="palm"              → lá cây cọ (fan palm frond)
  */
 export default function LeafDecor({ className = "", variant = "monstera" }) {
   if (variant === "palm") {
+    // Fan palm: five fronds radiating from a central stem
     return (
-      <svg
-        viewBox="0 0 200 200"
-        className={className}
-        aria-hidden="true"
-        fill="currentColor"
-      >
-        <path d="M100 195c-2-40-6-78-30-110C50 60 28 45 10 40c20-2 44 4 64 22 6-26-2-48-16-66 18 10 34 30 40 56 14-22 36-36 62-40-20 14-38 34-46 60 24-14 50-16 76-8-28 2-54 16-72 40-4 32-6 60-8 91z" />
+      <svg viewBox="0 0 200 200" className={className} aria-hidden="true" fill="currentColor">
+        {/* Stem */}
+        <path d="M97 198 L97 128 L103 128 L103 198 Z" />
+        {/* Centre frond — straight up */}
+        <path d="M96 128 C94 92 92 52 96 6 C104 52 106 92 104 128 Z" />
+        {/* Left frond */}
+        <path d="M94 126 C74 102 46 68 14 44 C36 58 68 92 92 123 Z" />
+        {/* Far-left frond */}
+        <path d="M91 122 C66 93 32 56 2 34 C26 48 60 82 89 119 Z" />
+        {/* Right frond */}
+        <path d="M106 126 C126 102 154 68 186 44 C164 58 132 92 108 123 Z" />
+        {/* Far-right frond */}
+        <path d="M109 122 C134 93 168 56 198 34 C174 48 140 82 111 119 Z" />
       </svg>
     );
   }
-  // monstera leaf with characteristic fenestrations
+
+  // Default: heartleaf philodendron (lá trầu bà)
+  // Characteristic large rounded leaf with heart-notch at the base
   return (
-    <svg
-      viewBox="0 0 200 200"
-      className={className}
-      aria-hidden="true"
-      fill="currentColor"
-    >
-      <path d="M100 12C58 14 24 48 18 92c-4 30 8 64 38 84l6-10c-18-16-26-40-22-64h22c-2 14 2 28 12 40l8-10c-6-10-8-22-6-34h26c-4 16 0 32 10 44l8-12c-6-10-8-22-4-34h24c8 0 16 4 22 12 2-46-32-88-78-94zm-30 56c-6 0-12-5-12-12s6-12 12-12 12 5 12 12-6 12-12 12z" />
-      <rect x="96" y="100" width="6" height="92" rx="3" />
+    <svg viewBox="0 0 200 205" className={className} aria-hidden="true" fill="currentColor">
+      {/* Leaf body */}
+      <path d="
+        M 100 8
+        C 140 8, 185 46, 185 92
+        C 185 142, 158 180, 122 193
+        C 112 197, 104 188, 100 183
+        C 96 188, 88 197, 78 193
+        C 42 180, 15 142, 15 92
+        C 15 46, 60 8, 100 8 Z
+      " />
+      {/* Short stem */}
+      <rect x="97" y="193" width="6" height="14" rx="3" />
     </svg>
   );
 }

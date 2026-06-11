@@ -33,16 +33,16 @@ export const metadata = {
 };
 
 function PriceLine({ item }) {
-  // Item with multiple durations/prices
   if (item.durations) {
+    // Each duration gets its own line: "490,000₫ (60')"
     return (
-      <div className="text-right">
-        <p className="text-xs uppercase tracking-wide text-ink-soft">
-          {item.durations.join(" · ")}
-        </p>
-        <p className="text-lg font-semibold text-gold">
-          {item.prices.map((p) => formatVnd(p)).join(" / ")}
-        </p>
+      <div className="text-right space-y-1">
+        {item.durations.map((d, i) => (
+          <p key={d} className="whitespace-nowrap text-base font-semibold text-gold">
+            {formatVnd(item.prices[i])}{" "}
+            <span className="text-sm font-normal text-ink-soft">({d})</span>
+          </p>
+        ))}
       </div>
     );
   }
@@ -60,23 +60,25 @@ export default function ServicesPage() {
   return (
     <>
       <PageHero
-        eyebrow="Price list"
-        title="The Tropi Q menu"
         image="/images/cover-services.png"
         aspectRatio="1448/792"
         imageClassName="object-cover"
-        intro="Every session uses genuine, premium products and our exclusive herbal water. Prices are in Vietnamese đồng (₫); we gladly accept card payments and can help with currency on arrival."
       />
 
       {/* ------------------------------------------ June 2026 best sellers */}
       <Section className="relative overflow-hidden bg-neutral-50">
         <LeafDecor variant="palm" className="pointer-events-none absolute -left-12 bottom-0 h-56 w-56 text-olive/10" />
         <Container className="relative">
-          <SectionTitle
-            eyebrow="June 2026 best seller"
-            title="Find your perfect match"
-            intro="Three guest favourites to begin with — explore the full menu for every treatment and price."
-          />
+          <div className="text-center">
+            <p className="text-sm font-medium uppercase tracking-widest text-ink-soft">Find your perfect match</p>
+            <h2 className="font-display mt-2 text-4xl text-ink sm:text-5xl">
+              June 2026 <span className="text-gold italic">Best Sellers</span>
+            </h2>
+            <span className="mt-3 inline-block rounded-full bg-gold px-4 py-1 text-xs font-semibold uppercase tracking-widest text-cream">
+              ★ Best Seller
+            </span>
+            <div className="rule mx-auto mt-5" />
+          </div>
           <div className="mt-14 grid gap-6 md:grid-cols-3">
             {bestSellers.map((item) => (
               <div
@@ -130,6 +132,7 @@ export default function ServicesPage() {
                     poster={groupPoster[group.id]}
                     alt={`${group.title} at Tropi Q`}
                     autoPlay
+                    contained
                   />
                 </div>
 

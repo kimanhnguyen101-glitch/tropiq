@@ -42,3 +42,5 @@ next-env.d.ts
 
 # raw source assets (not deployed, kept out of git)
 /_source/
+
+.vercel

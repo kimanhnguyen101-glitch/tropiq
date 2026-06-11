@@ -23,6 +23,7 @@ export default function VideoEmbed({
   caption,
   rounded = true,
   autoPlay = false,
+  contained = false, // force 16:9 landscape frame even in autoPlay mode (object-contain)
 }) {
   const radius = rounded ? "rounded-[2rem]" : "";
   const videoRef = useRef(null);
@@ -66,12 +67,12 @@ export default function VideoEmbed({
     );
   } else if (src) {
     if (autoPlay) {
-      // Natural-ratio video: no fixed container height, w-full h-auto.
-      // This preserves portrait orientation for vertical clips.
+      // contained=true → 16:9 frame, video object-contain (no crop, letterbox if needed)
+      // contained=false → natural dimensions (portrait stays portrait)
       inner = (
         <video
           ref={videoRef}
-          className="block h-auto w-full"
+          className={contained ? "absolute inset-0 h-full w-full object-contain" : "block h-auto w-full"}
           muted
           loop
           playsInline
@@ -118,10 +119,10 @@ export default function VideoEmbed({
     );
   }
 
-  // autoPlay + src: no fixed aspect ratio – natural dimensions (portrait = portrait).
-  // embed / controls / placeholder: fixed 16:9 container.
+  // contained or non-autoPlay → fixed 16:9 container
+  // autoPlay without contained → natural dimensions (portrait stays portrait)
   const wrapperClass =
-    autoPlay && src
+    autoPlay && src && !contained
       ? `overflow-hidden ${radius}`
       : `relative aspect-video overflow-hidden ${radius}`;
 
