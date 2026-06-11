@@ -96,9 +96,6 @@ export default function FranchisePage() {
             <Button href={whatsappLink} variant="gold">
               Enquire on WhatsApp
             </Button>
-            <Button href="/contact" variant="outline">
-              Contact us
-            </Button>
           </div>
           </div>
         </Container>

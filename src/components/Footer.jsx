@@ -59,6 +59,18 @@ export default function Footer() {
           >
             Book on WhatsApp
           </a>
+          <div className="mt-6 overflow-hidden rounded-2xl">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3083.989950663423!2d105.8433!3d21.0301516!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab35ea0b1f05%3A0xdc7e04bb22e91767!2sTropi%20Q%20-%20True%20Headspa%20in%20Vietnam!5e1!3m2!1sen!2s!4v1781098033502!5m2!1sen!2s"
+              width="100%"
+              height="200"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="Tropi Q location on Google Maps"
+            />
+          </div>
         </div>
       </div>
 

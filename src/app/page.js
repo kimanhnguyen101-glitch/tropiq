@@ -254,9 +254,6 @@ export default function Home() {
             <Button href={whatsappLink} variant="gold">
               Book on WhatsApp
             </Button>
-            <Button href="/contact" variant="outline">
-              Find us
-            </Button>
           </div>
           </div>
         </Container>

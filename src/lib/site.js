@@ -57,5 +57,4 @@ export const nav = [
   { href: "/experience", label: "Experience" },
   { href: "/franchise", label: "Franchise" },
   { href: "/blog", label: "Journal" },
-  { href: "/contact", label: "Contact" },
 ];
