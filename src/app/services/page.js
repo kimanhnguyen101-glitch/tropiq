@@ -1,7 +1,18 @@
-﻿import { Container, Section, PageHero, Button } from "@/components/ui";
+﻿import { Container, Section, SectionTitle, PageHero, Button } from "@/components/ui";
 import VideoEmbed from "@/components/VideoEmbed";
 import { menu, formatVnd } from "@/lib/menu";
 import { whatsappLink } from "@/lib/site";
+import LeafDecor from "@/components/LeafDecor";
+
+// June 2026 best sellers — pulled from menu data
+const find = (groupId, name) =>
+  menu.find((g) => g.id === groupId)?.items.find((i) => i.name === name);
+
+const bestSellers = [
+  { ...find("head-spa", "Signature"), title: "Signature Headspa", badge: "Must-try", href: "/services#head-spa" },
+  { ...find("combo", "Tropi 2 — Top to Toes"), title: "Top to Toes", badge: "Must-try", href: "/services#combo" },
+  { ...find("facial", "Relax Facial Care"), title: "Facial Care", badge: "Must-try", href: "/services#facial" },
+];
 
 // Poster image per service group for the illustrative video slot (swap for real
 // footage by setting `video`/`embedUrl` on the group in lib/menu.js).
@@ -56,6 +67,37 @@ export default function ServicesPage() {
         imageClassName="object-cover"
         intro="Every session uses genuine, premium products and our exclusive herbal water. Prices are in Vietnamese đồng (₫); we gladly accept card payments and can help with currency on arrival."
       />
+
+      {/* ------------------------------------------ June 2026 best sellers */}
+      <Section className="relative overflow-hidden bg-neutral-50">
+        <LeafDecor variant="palm" className="pointer-events-none absolute -left-12 bottom-0 h-56 w-56 text-olive/10" />
+        <Container className="relative">
+          <SectionTitle
+            eyebrow="June 2026 best seller"
+            title="Find your perfect match"
+            intro="Three guest favourites to begin with — explore the full menu for every treatment and price."
+          />
+          <div className="mt-14 grid gap-6 md:grid-cols-3">
+            {bestSellers.map((item) => (
+              <div
+                key={item.title}
+                className="flex flex-col rounded-3xl border border-sand bg-white p-8 transition-shadow hover:shadow-lg"
+              >
+                {item.badge && (
+                  <span className="mb-4 inline-flex w-fit rounded-full bg-gold/15 px-3 py-1 text-xs font-medium tracking-wide text-gold">
+                    {item.badge}
+                  </span>
+                )}
+                <h3 className="font-display text-2xl text-ink">{item.title}</h3>
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{item.desc}</p>
+                <Button href={item.href} variant="outline" className="mt-6 self-start">
+                  View details
+                </Button>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </Section>
 
       <Section className="bg-white">
         <Container className="max-w-4xl">

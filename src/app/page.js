@@ -1,35 +1,8 @@
-﻿import Image from "next/image";
-import { Container, Section, SectionTitle, Eyebrow, Button, Stars } from "@/components/ui";
-import VideoEmbed from "@/components/VideoEmbed";
+import Image from "next/image";
+import { Container, Section, SectionTitle, Button, Stars } from "@/components/ui";
 import LeafDecor from "@/components/LeafDecor";
+import ReviewSlider from "@/components/ReviewSlider";
 import { site, whatsappLink } from "@/lib/site";
-import { menu } from "@/lib/menu";
-
-// Three featured offers for the home page (per feedback): Signature Head Spa,
-// Top-to-Toes combo, and Facial Care. No prices here — link out to the full menu.
-const find = (groupId, name) =>
-  menu.find((g) => g.id === groupId)?.items.find((i) => i.name === name);
-
-const featured = [
-  {
-    ...find("head-spa", "Signature"),
-    title: "Signature Headspa",
-    badge: "Must-try",
-    href: "/services#head-spa",
-  },
-  {
-    ...find("combo", "Tropi 2 — Top to Toes"),
-    title: "Top to Toes",
-    badge: "Must-try",
-    href: "/services#combo",
-  },
-  {
-    ...find("facial", "Relax Facial Care"),
-    title: "Facial Care",
-    badge: "Must-try",
-    href: "/services#facial",
-  },
-];
 
 export default function Home() {
   return (
@@ -54,9 +27,11 @@ export default function Home() {
           <h1 className="font-display mx-auto max-w-4xl text-4xl font-medium leading-[1.05] text-ink sm:text-6xl">
             True Headspa <span className="italic text-gold">in Vietnam</span>
           </h1>
-          <p className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-ink-soft sm:text-lg">
-            A tropical retreat of warm light, signature scents and slow, intentional care —<br />
-            moments from Hanoi&apos;s Old Quarter.
+          <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-ink-soft sm:text-lg">
+            Tropi Q is a premier relaxation and wellness destination in the heart of Hanoi, designed
+            for international travelers and business visitors. Inspired by tropical nature and enriched
+            with traditional Vietnamese herbs, Tropi Q offers a holistic experience that rejuvenates
+            the body, mind, and soul.
           </p>
           <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
             <Button href={whatsappLink} variant="gold">
@@ -73,95 +48,6 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* ------------------------------------------------------------ Welcome */}
-      <Section className="bg-neutral-50">
-        <Container>
-          <div className="grid items-center gap-14 md:grid-cols-2">
-            <div>
-              <Eyebrow>Welcome to Tropi Q</Eyebrow>
-              <h2 className="font-display mt-3 text-3xl leading-tight text-ink sm:text-4xl md:text-5xl">
-                The true headspa in Vietnam — felt, not just done
-              </h2>
-              <div className="rule mt-6" />
-              <p className="mt-6 text-base leading-relaxed text-ink-soft">
-                Tropi Q is a <strong className="font-medium text-ink">multi-sensory experience</strong>:
-                the tropical ambiance, the scents, the soft sounds and the gentle touch of your
-                technician all working together to slow you down.
-              </p>
-              <p className="mt-4 text-base leading-relaxed text-ink-soft">
-                At its heart is our <strong className="font-medium text-ink">signature scent</strong> —
-                essential oils and a hair perfume blended to a ratio that belongs only to Tropi Q,
-                so you carry the calm with you long after you leave.
-              </p>
-            </div>
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2rem]">
-              <Image
-                src="/images/Welcome to Tropi Q.jpg"
-                alt="A multi-sensory headspa moment at Tropi Q"
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ------------------------------------------------- Featured services */}
-      <Section className="relative overflow-hidden bg-cream">
-        <LeafDecor variant="palm" className="pointer-events-none absolute -left-12 bottom-0 h-56 w-56 text-olive/10" />
-        <Container className="relative">
-          <SectionTitle
-            eyebrow="Signature offers"
-            title="Find your perfect match"
-            intro="Three guest favourites to begin with — explore the full menu for every treatment and price."
-          />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {featured.map((item) => (
-              <div
-                key={item.title}
-                className="flex flex-col rounded-3xl border border-sand bg-neutral-100 p-8 transition-shadow hover:shadow-lg"
-              >
-                {item.badge && (
-                  <span className="mb-4 inline-flex w-fit rounded-full bg-gold/15 px-3 py-1 text-xs font-medium tracking-wide text-gold">
-                    {item.badge}
-                  </span>
-                )}
-                <h3 className="font-display text-2xl text-ink">{item.title}</h3>
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-ink-soft">{item.desc}</p>
-                <Button href={item.href} variant="outline" className="mt-6 self-start">
-                  View details
-                </Button>
-              </div>
-            ))}
-          </div>
-          <div className="mt-12 text-center">
-            <Button href="/services" variant="primary">
-              See our full menu
-            </Button>
-          </div>
-        </Container>
-      </Section>
-
-      {/* --------------------------------------------- Video: guest experience */}
-      <Section className="bg-neutral-50">
-        <Container className="max-w-4xl">
-          <SectionTitle
-            eyebrow="See it to feel it"
-            title="A glimpse of the experience"
-            intro="Watch real guests unwind through the Tropi Q head spa — the ambiance, the scents, the touch."
-          />
-          <div className="mt-12">
-            <VideoEmbed
-              src="/videos/home.mp4"
-              alt="Guests experiencing the Tropi Q headspa"
-              caption="Guest experience at Tropi Q."
-              autoPlay
-            />
-          </div>
-        </Container>
-      </Section>
-
       {/* ------------------------------------------------------- Difference */}
       <section className="relative overflow-hidden py-28">
         <Image
@@ -174,23 +60,40 @@ export default function Home() {
         <div className="absolute inset-0 bg-olive-deep/85" />
         <Container className="relative z-10">
           <div className="mx-auto max-w-2xl text-center text-cream">
-            <p className="eyebrow" style={{ color: "rgba(238,226,214,0.85)", letterSpacing: "0.28em", fontSize: "0.72rem", fontWeight: 500, textTransform: "uppercase" }}>The Tropi Q difference</p>
-            <h2 className="font-display mt-3 text-3xl leading-tight drop-shadow sm:text-4xl md:text-5xl">
-              A scent you&apos;ll remember Hanoi by
-            </h2>
-            <p className="mt-6 text-base leading-relaxed text-cream drop-shadow">
-              Our hair tonics and perfumes are customised to a ratio that exists nowhere else — an
-              original blend created only for Tropi Q. It lingers long after you leave.
+            <p style={{ color: "rgba(238,226,214,0.85)", letterSpacing: "0.28em", fontSize: "0.72rem", fontWeight: 500, textTransform: "uppercase" }}>
+              Vietnam&apos;s true headspa experience
             </p>
+            <h2 className="font-display mt-3 text-3xl leading-tight drop-shadow sm:text-4xl md:text-5xl">
+              Why travelers keep coming back to Tropi Q
+            </h2>
+            <div className="rule mx-auto mt-6" style={{ background: "rgba(238,226,214,0.5)" }} />
           </div>
-          <div className="mt-14 grid gap-8 sm:grid-cols-3">
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { t: "Warm light, never dim", d: "So you feel safe enough to fully relax with your eyes closed." },
-              { t: "Original-brand products", d: "Genuine, premium materials — nothing cut, nothing compromised." },
-              { t: "A signature aroma", d: "Custom essential oils and hair perfume blended only for Tropi Q." },
-              { t: "No extra charge for card payments", d: "Pay however is convenient for you — no hidden fees." },
-              { t: "No pressure to tip the staff", d: "Our team is here to care for you, with no expectations." },
-              { t: "Friendly and welcoming", d: "Every guest is greeted warmly from the moment they arrive." },
+              {
+                t: "Vietnam's true headspa",
+                d: "A complete headspa ritual inspired by tropical nature and traditional Vietnamese herbs — nothing rushed, nothing missed.",
+              },
+              {
+                t: "All-in-one spa",
+                d: "Head, scalp, shoulders, face and feet: everything in one place, one session, one destination.",
+              },
+              {
+                t: "NO tip pressure",
+                d: "Our team's warmth comes naturally. Tipping is entirely optional — never expected.",
+              },
+              {
+                t: "NO card surcharge",
+                d: "Pay by card at no extra cost. What you see on the menu is what you pay.",
+              },
+              {
+                t: "NO hidden fees",
+                d: "Full transparency on every service. No surprises at checkout — ever.",
+              },
+              {
+                t: "Friendly staffs",
+                d: "English-speaking, warm and attentive — ready to welcome you from the moment you arrive.",
+              },
             ].map((f) => (
               <div key={f.t} className="rounded-2xl bg-olive-deep/40 p-6 text-center text-cream backdrop-blur-sm">
                 <h3 className="font-display text-xl text-cream">{f.t}</h3>
@@ -206,37 +109,16 @@ export default function Home() {
         </Container>
       </section>
 
-      {/* ---------------------------------------------------------- Reviews */}
+      {/* ---------------------------------------- From our guests, With Love */}
       <Section className="bg-white">
         <Container>
           <SectionTitle
-            eyebrow="Loved by travellers"
+            eyebrow="From our guests, With Love"
             title="5.0★ guest rated"
             intro="No incentives, no pressure — just guests who came to relax and left telling others."
           />
-          <div className="mt-14 grid gap-6 md:grid-cols-3">
-            {[
-              {
-                q: "The most relaxing thing I did in Vietnam. The head massage was unreal and the space smells incredible.",
-                a: "Google guest",
-              },
-              {
-                q: "Warm, clean and genuinely caring staff. I booked twice in one trip to Hanoi.",
-                a: "Google guest",
-              },
-              {
-                q: "A hidden gem near the Old Quarter. Walked past, loved the look, came in — best decision.",
-                a: "Google guest",
-              },
-            ].map((r, i) => (
-              <figure key={i} className="rounded-3xl border border-sand bg-neutral-100 p-8">
-                <Stars rating={5} />
-                <blockquote className="mt-4 text-base leading-relaxed text-ink">
-                  “{r.q}”
-                </blockquote>
-                <figcaption className="mt-5 text-sm text-ink-soft">— {r.a}</figcaption>
-              </figure>
-            ))}
+          <div className="mt-14">
+            <ReviewSlider />
           </div>
         </Container>
       </Section>
@@ -245,16 +127,16 @@ export default function Home() {
       <section className="bg-neutral-50 py-20 text-center">
         <Container>
           <div className="mx-auto max-w-xl rounded-3xl bg-white px-10 py-12 shadow-sm">
-          <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">Ready to unwind?</h2>
-          <p className="mx-auto mt-5 max-w-xl text-base text-ink-soft">
-            Message us on WhatsApp to book your headspa experience. We&apos;ll help you choose the
-            perfect treatment for your time in Hanoi.
-          </p>
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
-            <Button href={whatsappLink} variant="gold">
-              Book on WhatsApp
-            </Button>
-          </div>
+            <h2 className="font-display text-3xl text-ink sm:text-4xl md:text-5xl">Ready to unwind?</h2>
+            <p className="mx-auto mt-5 max-w-xl text-base text-ink-soft">
+              Message us on WhatsApp to book your headspa experience. We&apos;ll help you choose the
+              perfect treatment for your time in Hanoi.
+            </p>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-4">
+              <Button href={whatsappLink} variant="gold">
+                Book on WhatsApp
+              </Button>
+            </div>
           </div>
         </Container>
       </section>
