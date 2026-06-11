@@ -55,7 +55,7 @@ export default function Header() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`text-base tracking-wide transition-colors hover:text-gold ${
+                className={`text-lg tracking-wide transition-colors hover:text-gold ${
                   active ? "text-gold" : "text-ink-soft"
                 }`}
               >

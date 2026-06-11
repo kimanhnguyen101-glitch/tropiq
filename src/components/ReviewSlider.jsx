@@ -25,13 +25,14 @@ export default function ReviewSlider() {
           {slides.map((img, i) => (
             <div
               key={i}
-              className="relative h-72 w-48 shrink-0 overflow-hidden rounded-2xl border border-sand bg-white shadow-sm"
+              className="relative shrink-0 overflow-hidden rounded-2xl border border-sand bg-white shadow-sm"
+              style={{ width: 420, height: 260 }}
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                sizes="192px"
+                sizes="420px"
                 className="object-contain"
               />
             </div>
