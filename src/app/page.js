@@ -49,65 +49,36 @@ export default function Home() {
       </Section>
 
       {/* ------------------------------------------------------- Difference */}
-      <section className="relative overflow-hidden py-28">
-        <Image
-          src="/images/store/store-07.jpg"
-          alt="Tropi Q interior detail"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-olive-deep/85" />
-        <Container className="relative z-10">
-          <div className="mx-auto max-w-2xl text-center text-cream">
-            <p style={{ color: "rgba(238,226,214,0.85)", letterSpacing: "0.28em", fontSize: "0.72rem", fontWeight: 500, textTransform: "uppercase" }}>
-              Vietnam&apos;s true headspa experience
-            </p>
-            <h2 className="font-display mt-3 text-3xl leading-tight drop-shadow sm:text-4xl md:text-5xl">
+      <Section className="bg-neutral-50">
+        <Container>
+          <div className="mx-auto max-w-2xl text-center">
+            <h2 className="font-display text-3xl leading-tight text-ink sm:text-4xl md:text-5xl">
               Why travelers keep coming back to Tropi Q
             </h2>
-            <div className="rule mx-auto mt-6" style={{ background: "rgba(238,226,214,0.5)" }} />
+            <div className="rule mx-auto mt-5" />
           </div>
-          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mx-auto mt-12 max-w-3xl grid gap-3 sm:grid-cols-2">
             {[
-              {
-                t: "Vietnam's true headspa",
-                d: "A complete headspa ritual inspired by tropical nature and traditional Vietnamese herbs — nothing rushed, nothing missed.",
-              },
-              {
-                t: "All-in-one spa",
-                d: "Head, scalp, shoulders, face and feet: everything in one place, one session, one destination.",
-              },
-              {
-                t: "NO tip pressure",
-                d: "Our team's warmth comes naturally. Tipping is entirely optional — never expected.",
-              },
-              {
-                t: "NO card surcharge",
-                d: "Pay by card at no extra cost. What you see on the menu is what you pay.",
-              },
-              {
-                t: "NO hidden fees",
-                d: "Full transparency on every service. No surprises at checkout — ever.",
-              },
-              {
-                t: "Friendly staffs",
-                d: "English-speaking, warm and attentive — ready to welcome you from the moment you arrive.",
-              },
-            ].map((f) => (
-              <div key={f.t} className="rounded-2xl bg-olive-deep/40 p-6 text-center text-cream backdrop-blur-sm">
-                <h3 className="font-display text-xl text-cream">{f.t}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-cream/85">{f.d}</p>
+              "Vietnam's true headspa experience",
+              "All-in-one spa",
+              "NO tip pressure",
+              "NO card surcharge",
+              "NO hidden fees",
+              "Friendly staffs",
+            ].map((label) => (
+              <div key={label} className="flex items-center gap-4 rounded-2xl border border-sand bg-white px-6 py-5">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-gold" />
+                <p className="font-display text-lg text-ink">{label}</p>
               </div>
             ))}
           </div>
-          <div className="mt-12 text-center">
-            <Button href="/experience" variant="light">
+          <div className="mt-10 text-center">
+            <Button href="/experience" variant="primary">
               Step inside
             </Button>
           </div>
         </Container>
-      </section>
+      </Section>
 
       {/* ---------------------------------------- From our guests, With Love */}
       <Section className="bg-white">
