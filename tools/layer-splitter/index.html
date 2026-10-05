@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Layer Splitter</title>
+<style>
+/* Layout: left = image stage on a checkerboard, right = layers panel. Brand tokens from Tropi Q. */
+:root{
+  --bg:#f6f1ea; --panel:#fffdf9; --ink:#2b2a26; --muted:#6f6a60; --line:#ddd3c4;
+  --olive:#607648; --olive-ink:#fff; --terra:#b56b2c; --check-a:#e9e3d9; --check-b:#f7f3ec;
+  --font:"Anek Latin",system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#1c1e19; --panel:#262922; --ink:#ece6da; --muted:#a39d8f; --line:#3a3e33;
+  --olive:#8aa66b; --olive-ink:#14170f; --terra:#d78d4e; --check-a:#2f322a; --check-b:#383c32; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#1c1e19; --panel:#262922; --ink:#ece6da; --muted:#a39d8f; --line:#3a3e33;
+  --olive:#8aa66b; --olive-ink:#14170f; --terra:#d78d4e; --check-a:#2f322a; --check-b:#383c32; color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font:15px/1.5 var(--font);padding-inline:16px;padding-block:20px}
+.wrap{max-width:1240px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 16px;justify-content:space-between}
+h1{margin:0;font-size:1.5rem;letter-spacing:-.01em}
+.sub{color:var(--muted);margin:0}
+.grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+@media (max-width:860px){.grid{grid-template-columns:minmax(0,1fr)}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+button,.btn{font:inherit;border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 12px;border-radius:8px;cursor:pointer}
+button:hover:not(:disabled){border-color:var(--olive)}
+button:disabled{opacity:.45;cursor:not-allowed}
+button.primary{background:var(--olive);border-color:var(--olive);color:var(--olive-ink);font-weight:600}
+button:focus-visible,input:focus-visible{outline:2px solid var(--terra);outline-offset:2px}
+.stage{position:relative;overflow:auto;max-height:72vh;border-radius:8px;border:1px solid var(--line);
+  background:conic-gradient(var(--check-a) 25%,var(--check-b) 0 50%,var(--check-a) 0 75%,var(--check-b) 0) 0 0/20px 20px}
+.stage-inner{position:relative;width:max-content;max-width:100%;margin:0 auto}
+.stage canvas{display:block;max-width:100%;height:auto}
+#overlay{position:absolute;inset:0;width:100%;height:100%;cursor:crosshair}
+.drop{display:grid;place-items:center;min-height:320px;text-align:center;color:var(--muted);padding:24px;border:2px dashed var(--line);border-radius:10px}
+.drop.over{border-color:var(--olive);color:var(--ink)}
+.status{margin-top:10px;color:var(--muted);min-height:1.5em}
+.status b{color:var(--terra)}
+.hint{margin:10px 0 0;color:var(--muted);font-size:.9rem}
+h2{margin:0 0 10px;font-size:1rem}
+#layers{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.layer{display:grid;grid-template-columns:auto 44px minmax(0,1fr) auto;gap:8px;align-items:center;padding:6px;border:1px solid var(--line);border-radius:8px}
+.layer.sel{border-color:var(--olive);box-shadow:inset 0 0 0 1px var(--olive)}
+.layer canvas{width:44px;height:44px;object-fit:contain;border-radius:4px;
+  background:conic-gradient(var(--check-a) 25%,var(--check-b) 0 50%,var(--check-a) 0 75%,var(--check-b) 0) 0 0/10px 10px}
+.layer input[type=text]{width:100%;min-width:0;font:inherit;color:var(--ink);background:transparent;border:1px solid transparent;border-radius:6px;padding:3px 6px}
+.layer input[type=text]:hover,.layer input[type=text]:focus{border-color:var(--line)}
+.icons{display:flex;gap:4px}
+.icons button{padding:4px 8px;font-size:.85rem}
+.exports{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.empty{color:var(--muted);margin:0}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Layer Splitter</h1>
+    <p class="sub">Cut a flat PNG or JPG into separate layers. Everything runs in your browser; images never leave your computer.</p>
+  </header>
+
+  <div class="grid">
+    <section class="card" aria-label="Image">
+      <div class="toolbar">
+        <label class="btn primary" for="file" tabindex="0">Open image</label>
+        <input id="file" type="file" accept="image/png,image/jpeg,image/webp" hidden>
+        <button id="btnBg" disabled>Separate subject from background</button>
+        <button id="btnSam" disabled>Enable click-to-cut</button>
+        <button id="btnCut" class="primary" disabled>Cut selection to new layer</button>
+        <button id="btnClear" disabled>Clear points</button>
+      </div>
+      <div id="drop" class="drop"><p>Drop a PNG or JPG here, or press <b>Open image</b>.</p></div>
+      <div id="stageWrap" class="stage" hidden>
+        <div class="stage-inner"><canvas id="view"></canvas><canvas id="overlay"></canvas></div>
+      </div>
+      <div id="status" class="status" role="status" aria-live="polite"></div>
+      <p class="hint" id="hint" hidden>Click-to-cut: click an object to select it, click more spots to grow the selection, Shift-click (or right-click) to remove an area. Then press “Cut selection to new layer”. The cut comes from the layer highlighted on the right.</p>
+    </section>
+
+    <aside class="card" aria-label="Layers">
+      <h2>Layers (top first)</h2>
+      <ul id="layers"></ul>
+      <p id="noLayers" class="empty">Open an image to begin.</p>
+      <div class="exports">
+        <button id="btnZip" disabled>Download all (ZIP)</button>
+        <button id="btnPsd" disabled>Download PSD</button>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script type="module">
+const $ = id => document.getElementById(id);
+const view = $('view'), overlay = $('overlay'), vctx = view.getContext('2d'), octx = overlay.getContext('2d');
+const MAX_SIDE = 4096;
+
+let W = 0, H = 0, original = null;      // original: canvas
+let layers = [];                         // bottom -> top: {id,name,canvas,visible}
+let selected = null, nextId = 1;
+let sam = null;                          // {model, processor, RawImage, Tensor, embeddings, inputs}
+let points = [], labels = [], pendingMask = null;
+
+const status = (msg, warn) => { $('status').innerHTML = warn ? `<b>${msg}</b>` : msg; };
+const mk = (w, h) => { const c = document.createElement('canvas'); c.width = w; c.height = h; return c; };
+const lock = on => ['btnBg','btnSam','btnCut','btnClear','btnZip','btnPsd'].forEach(id => $(id).disabled = on);
+
+/* ---------- loading ---------- */
+async function loadFile(file) {
+  if (!file || !/^image\//.test(file.type)) return status('Please choose a PNG, JPG or WebP image.', true);
+  const bmp = await createImageBitmap(file);
+  const s = Math.min(1, MAX_SIDE / Math.max(bmp.width, bmp.height));
+  W = Math.round(bmp.width * s); H = Math.round(bmp.height * s);
+  original = mk(W, H); original.getContext('2d').drawImage(bmp, 0, 0, W, H);
+  view.width = overlay.width = W; view.height = overlay.height = H;
+  layers = []; nextId = 1; sam = null; clearPoints();
+  const base = mk(W, H); base.getContext('2d').drawImage(original, 0, 0);
+  addLayer('Background', base); selected = layers[0].id;
+  $('drop').hidden = true; $('stageWrap').hidden = false; $('hint').hidden = false;
+  $('btnBg').disabled = false; $('btnSam').disabled = false; $('btnSam').textContent = 'Enable click-to-cut';
+  refresh(); status(`Loaded ${W} × ${H} px.`);
+}
+$('file').addEventListener('change', e => loadFile(e.target.files[0]));
+$('drop').addEventListener('dragover', e => { e.preventDefault(); $('drop').classList.add('over'); });
+$('drop').addEventListener('dragleave', () => $('drop').classList.remove('over'));
+$('drop').addEventListener('drop', e => { e.preventDefault(); $('drop').classList.remove('over'); loadFile(e.dataTransfer.files[0]); });
+document.addEventListener('dragover', e => e.preventDefault());
+document.addEventListener('drop', e => { if (e.target.id !== 'drop') { e.preventDefault(); loadFile(e.dataTransfer.files[0]); } });
+document.querySelector('label[for=file]').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('file').click(); } });
+
+/* ---------- layers ---------- */
+function addLayer(name, canvas) { const l = { id: nextId++, name, canvas, visible: true }; layers.push(l); return l; }
+const byId = id => layers.find(l => l.id === id);
+
+function refresh() {
+  vctx.clearRect(0, 0, W, H);
+  layers.forEach(l => { if (l.visible) vctx.drawImage(l.canvas, 0, 0); });
+  renderList();
+  const has = layers.length > 0;
+  $('btnZip').disabled = $('btnPsd').disabled = !has;
+  $('noLayers').hidden = has;
+}
+
+function renderList() {
+  const ul = $('layers'); ul.innerHTML = '';
+  [...layers].reverse().forEach(l => {
+    const li = document.createElement('li');
+    li.className = 'layer' + (l.id === selected ? ' sel' : '');
+    const vis = document.createElement('input'); vis.type = 'checkbox'; vis.checked = l.visible; vis.title = 'Show / hide'; vis.setAttribute('aria-label', 'Show ' + l.name);
+    vis.onchange = () => { l.visible = vis.checked; refresh(); };
+    const th = mk(44, 44); const s = Math.min(44 / W, 44 / H);
+    th.getContext('2d').drawImage(l.canvas, (44 - W * s) / 2, (44 - H * s) / 2, W * s, H * s);
+    th.onclick = () => { selected = l.id; renderList(); };
+    const name = document.createElement('input'); name.type = 'text'; name.value = l.name; name.setAttribute('aria-label', 'Layer name');
+    name.onfocus = () => { selected = l.id; li.parentNode.querySelectorAll('.layer').forEach(x => x.classList.remove('sel')); li.classList.add('sel'); };
+    name.onchange = () => { l.name = name.value.trim() || 'Layer'; };
+    const ic = document.createElement('div'); ic.className = 'icons';
+    const dl = document.createElement('button'); dl.textContent = 'PNG'; dl.title = 'Download this layer';
+    dl.onclick = () => saveCanvas(l.canvas, fileName(l.name) + '.png');
+    const del = document.createElement('button'); del.textContent = '✕'; del.title = 'Delete layer'; del.setAttribute('aria-label', 'Delete ' + l.name);
+    del.onclick = () => { layers = layers.filter(x => x !== l); if (selected === l.id) selected = layers[layers.length - 1]?.id ?? null; refresh(); };
+    ic.append(dl, del);
+    li.append(vis, th, name, ic); ul.append(li);
+  });
+}
+
+const fileName = s => s.replace(/[^\w\-]+/g, '_') || 'layer';
+function toBlob(c) { return new Promise(r => c.toBlob(r, 'image/png')); }
+function download(blob, name) { const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = name; a.click(); setTimeout(() => URL.revokeObjectURL(a.href), 4000); }
+async function saveCanvas(c, name) { download(await toBlob(c), name); }
+
+$('btnZip').onclick = async () => {
+  if (!window.JSZip) return status('ZIP library did not load. Check your internet connection.', true);
+  const zip = new JSZip();
+  for (const [i, l] of layers.entries()) zip.file(`${String(i + 1).padStart(2, '0')}_${fileName(l.name)}.png`, await toBlob(l.canvas));
+  download(await zip.generateAsync({ type: 'blob' }), 'layers.zip'); status('Saved layers.zip (full-size PNG per layer).');
+};
+
+$('btnPsd').onclick = async () => {
+  try {
+    status('Building PSD…');
+    const { writePsd } = await import('https://cdn.jsdelivr.net/npm/ag-psd@28.2.2/+esm');
+    const psd = { width: W, height: H, children: layers.map(l => ({ name: l.name, canvas: l.canvas, hidden: !l.visible })) };
+    const buf = writePsd(psd);
+    download(new Blob([buf], { type: 'image/vnd.adobe.photoshop' }), 'layers.psd');
+    status('Saved layers.psd. Open it in Photoshop, Photopea, Affinity or Krita.');
+  } catch (e) { console.error(e); status('PSD export failed. Use the ZIP of PNG files instead.', true); }
+};
+
+/* ---------- subject / background ---------- */
+function subtractAlpha(target, maskCanvas) {
+  const c = target.getContext('2d'); c.globalCompositeOperation = 'destination-out'; c.drawImage(maskCanvas, 0, 0); c.globalCompositeOperation = 'source-over';
+}
+$('btnBg').onclick = async () => {
+  lock(true);
+  try {
+    status('Loading the background-removal model (about 40 MB the first time)…');
+    const { removeBackground } = await import('https://cdn.jsdelivr.net/npm/@imgly/background-removal@1.5.5/+esm');
+    const src = layerOf(selected) || layers[0];
+    const blob = await removeBackground(await toBlob(src.canvas), { progress: (k, cur, tot) => status(`Working… ${Math.round(100 * cur / tot)}%`) });
+    const bmp = await createImageBitmap(blob);
+    const subj = mk(W, H); subj.getContext('2d').drawImage(bmp, 0, 0, W, H);
+    subtractAlpha(src.canvas, subj);
+    addLayer('Subject', subj); selected = layers[layers.length - 1].id; refresh();
+    status('Done. “Subject” is on its own layer; the rest stays in the layer below.');
+  } catch (e) { console.error(e); status('Background removal failed. Check your internet connection and try again.', true); }
+  lock(false); updateButtons();
+};
+const layerOf = id => byId(id);
+
+/* ---------- click-to-cut (Segment Anything in the browser) ---------- */
+$('btnSam').onclick = async () => {
+  lock(true);
+  try {
+    status('Loading the selection model (about 50 MB the first time)…');
+    const T = await import('https://cdn.jsdelivr.net/npm/@huggingface/transformers@3.7.2/+esm');
+    const id = 'Xenova/slimsam-77-uniform';
+    const model = await T.SamModel.from_pretrained(id, { dtype: 'fp32' });
+    const processor = await T.AutoProcessor.from_pretrained(id);
+    status('Reading the image…');
+    const rgb = mk(W, H); const rc = rgb.getContext('2d'); rc.fillStyle = '#fff'; rc.fillRect(0, 0, W, H); rc.drawImage(original, 0, 0);
+    const image = await T.RawImage.fromBlob(await new Promise(r => rgb.toBlob(r, 'image/jpeg', .95)));
+    const inputs = await processor(image);
+    const embeddings = await model.get_image_embeddings(inputs);
+    sam = { model, processor, Tensor: T.Tensor, inputs, embeddings };
+    $('btnSam').textContent = 'Click-to-cut ready';
+    status('Ready. Click an object in the image.');
+    overlay.style.pointerEvents = 'auto';
+  } catch (e) { console.error(e); status('Could not load the selection model. Check your internet connection.', true); }
+  lock(false); updateButtons();
+};
+
+function updateButtons() {
+  $('btnSam').disabled = !original || !!sam;
+  $('btnBg').disabled = !original;
+  $('btnCut').disabled = !pendingMask;
+  $('btnClear').disabled = points.length === 0;
+  $('btnZip').disabled = $('btnPsd').disabled = layers.length === 0;
+}
+
+function clearPoints() { points = []; labels = []; pendingMask = null; octx.clearRect(0, 0, overlay.width, overlay.height); updateButtons(); }
+$('btnClear').onclick = () => { clearPoints(); status(''); };
+
+async function addPoint(e, positive) {
+  if (!sam) return;
+  const r = overlay.getBoundingClientRect();
+  points.push([(e.clientX - r.left) / r.width, (e.clientY - r.top) / r.height]); labels.push(positive ? 1 : 0);
+  status('Selecting…');
+  const { model, processor, Tensor, inputs, embeddings } = sam;
+  const rs = inputs.reshaped_input_sizes[0];
+  const pts = points.flatMap(p => [p[0] * rs[1], p[1] * rs[0]]);
+  const input_points = new Tensor('float32', new Float32Array(pts), [1, 1, points.length, 2]);
+  const input_labels = new Tensor('int64', new BigInt64Array(labels.map(BigInt)), [1, 1, points.length]);
+  const out = await model({ ...embeddings, input_points, input_labels });
+  const masks = await processor.post_process_masks(out.pred_masks, inputs.original_sizes, inputs.reshaped_input_sizes);
+  const m = masks[0], [, n, mh, mw] = m.dims, scores = out.iou_scores.data;
+  let best = 0; for (let i = 1; i < n; i++) if (scores[i] > scores[best]) best = i;
+  const off = best * mh * mw;
+  pendingMask = mk(mw, mh);
+  const mctx = pendingMask.getContext('2d'), img = mctx.createImageData(mw, mh);
+  for (let i = 0; i < mw * mh; i++) if (m.data[off + i]) { img.data[i * 4 + 3] = 255; }
+  mctx.putImageData(img, 0, 0);
+  drawPreview(); updateButtons();
+  status('Add more clicks to refine, or cut the selection to a new layer.');
+}
+
+function drawPreview() {
+  octx.clearRect(0, 0, W, H);
+  if (pendingMask) {
+    const t = mk(W, H), c = t.getContext('2d');
+    c.drawImage(pendingMask, 0, 0, W, H); c.globalCompositeOperation = 'source-in'; c.fillStyle = 'rgba(181,107,44,.55)'; c.fillRect(0, 0, W, H);
+    octx.drawImage(t, 0, 0);
+  }
+  const rad = Math.max(5, W / 120);
+  points.forEach((p, i) => { octx.beginPath(); octx.arc(p[0] * W, p[1] * H, rad, 0, 7); octx.fillStyle = labels[i] ? '#3aa655' : '#d64545'; octx.fill(); octx.lineWidth = rad / 3; octx.strokeStyle = '#fff'; octx.stroke(); });
+}
+
+overlay.style.pointerEvents = 'none';
+overlay.addEventListener('click', e => addPoint(e, !e.shiftKey));
+overlay.addEventListener('contextmenu', e => { e.preventDefault(); addPoint(e, false); });
+
+$('btnCut').onclick = () => {
+  const src = layerOf(selected) || layers[0];
+  if (!pendingMask || !src) return;
+  const mask = mk(W, H); mask.getContext('2d').drawImage(pendingMask, 0, 0, W, H);
+  const piece = mk(W, H), c = piece.getContext('2d');
+  c.drawImage(src.canvas, 0, 0); c.globalCompositeOperation = 'destination-in'; c.drawImage(mask, 0, 0);
+  subtractAlpha(src.canvas, mask);
+  const idx = layers.indexOf(src);
+  const l = { id: nextId++, name: 'Object ' + (layers.length), canvas: piece, visible: true };
+  layers.splice(idx + 1, 0, l); selected = l.id;
+  clearPoints(); refresh(); status('Cut to a new layer. Click another object to continue.');
+};
+
+refresh();
+</script>
+</body>
+</html>
