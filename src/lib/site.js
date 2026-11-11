@@ -24,9 +24,9 @@ export const site = {
     mapsQuery: "Tropi Q Head Spa, 7 Tran Phu, Ba Dinh, Hanoi",
   },
   phone: {
-    display: "0989 327 997",
-    intl: "+84989327997",
-    whatsapp: "84989327997",
+    display: "0333 892 329",
+    intl: "+84333892329",
+    whatsapp: "84333892329",
   },
   legal: {
     businessName: "HỘ KINH DOANH TROPI Q - GỘI ĐẦU VÀ CHĂM SÓC MÓNG",
